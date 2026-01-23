@@ -1,0 +1,54 @@
+# Advanced Calculator - Nexus 2.0 ULTRA
+out "=== Nexus Advanced Calculator ==="
+out ""
+
+fn show_menu()
+    out "1. Basic Operations"
+    out "2. Trigonometry"
+    out "3. Logarithms"
+    out "4. Circle Calculator"
+    out "5. Exit"
+end
+
+show_menu()
+
+set choice = input "Select option (1-5): "
+
+if choice == "1"
+    set a = input "Enter first number: "
+    set b = input "Enter second number: "
+    out "Addition: " + (a + b)
+    out "Subtraction: " + (a - b)
+    out "Multiplication: " + (a * b)
+    out "Division: " + (a / b)
+end
+
+if choice == "2"
+    set angle = input "Enter angle in degrees: "
+    set rad = math.rad(angle)
+    out "Sine: " + math.sin(rad)
+    out "Cosine: " + math.cos(rad)
+    out "Tangent: " + math.tan(rad)
+end
+
+if choice == "3"
+    set num = input "Enter number: "
+    out "Natural log: " + math.log(num)
+    out "Log base 10: " + math.log10(num)
+    out "Log base 2: " + math.log2(num)
+end
+
+if choice == "4"
+    set radius = input "Enter radius: "
+    set area = math.pi() * math.pow(radius, 2)
+    set circumference = 2 * math.pi() * radius
+    out "Area: " + area
+    out "Circumference: " + circumference
+end
+
+if choice == "5"
+    out "Goodbye!"
+    sys.exit()
+end
+
+gui.msg("Calculation complete!")
