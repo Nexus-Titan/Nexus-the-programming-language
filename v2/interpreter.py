@@ -10,7 +10,7 @@ class NexusTitan:
             "OS": platform.system(),
             "VER": "2.0-ULTRA",
             "ARCH": platform.machine(),
-            "USER": os.getlogin() if hasattr(os, 'getlogin') else "NexusUser",
+            "USER": os.getenv("USER") or os.getenv("USERNAME") or "NexusUser",
             "CWD": os.getcwd(),
             "PI": math.pi,
             "E": math.e
@@ -66,7 +66,7 @@ class NexusTitan:
 
         sys_map = {
             'os': lambda: platform.system(), 'ver': lambda: platform.version(), 'arch': lambda: platform.machine(),
-            'user': lambda: os.getlogin() if hasattr(os, 'getlogin') else "NexusUser", 
+            'user': lambda: os.getenv("USER") or os.getenv("USERNAME") or "NexusUser", 
             'cwd': os.getcwd, 'setcwd': os.chdir, 'env': lambda k: os.getenv(k),
             'exit': sys.exit, 'pid': os.getpid, 'cpu_count': os.cpu_count, 
             'shell': lambda c: subprocess.getoutput(c),

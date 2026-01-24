@@ -1,0 +1,92 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Nexus",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#modules"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#operators"
+		},
+		{
+			"include": "#variables"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.number-sign.nexus",
+					"match": "#.*$"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.nexus",
+					"match": "\\b(if|else|end|loop|fn|return|break|while|for|repeat)\\b"
+				},
+				{
+					"name": "keyword.other.nexus",
+					"match": "\\b(set|out|input|wait)\\b"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.nexus",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.nexus",
+					"match": "\\\\."
+				}
+			]
+		},
+		"modules": {
+			"patterns": [
+				{
+					"match": "\\b(math|str|sys|io|net|gui|date|rnd|cli|json)(\\.)([a-zA-Z_]\\w*)",
+					"captures": {
+						"1": { "name": "support.class.nexus" },
+						"2": { "name": "punctuation.accessor.nexus" },
+						"3": { "name": "support.function.library.nexus" }
+					}
+				}
+			]
+		},
+		"numbers": {
+			"name": "constant.numeric.nexus",
+			"match": "\\b\\d+(\\.\\d+)?\\b"
+		},
+		"operators": {
+			"name": "keyword.operator.nexus",
+			"match": "(\\+|\\-|\\*|\\/|==|!=|>|<|>=|<=|=)"
+		},
+		"variables": {
+			"patterns": [
+				{
+					"match": "\\b(set)\\s+([a-zA-Z_]\\w*)",
+					"captures": {
+						"1": { "name": "keyword.other.nexus" },
+						"2": { "name": "variable.name.nexus" }
+					}
+				}
+			]
+		}
+	},
+	"scopeName": "source.nexus"
+}

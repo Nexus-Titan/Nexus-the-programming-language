@@ -1,0 +1,32 @@
+{
+  "name": "nexus-titan-support",
+  "displayName": "Nexus Titan",
+  "description": "Syntax highlighting and snippets for Nexus Titan",
+  "version": "2.0.0",
+  "publisher": "tiwut",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Themes"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "nexus",
+      "aliases": ["Nexus", "nexus"],
+      "extensions": [".nx"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "nexus",
+      "scopeName": "source.nexus",
+      "path": "./syntaxes/nexus.tmLanguage.json"
+    }],
+    "themes": [{
+      "label": "Nexus Titan Dark",
+      "uiTheme": "vs-dark",
+      "path": "./themes/nexus-titan-theme.json"
+    }]
+  }
+}

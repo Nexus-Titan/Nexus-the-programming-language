@@ -1,0 +1,34 @@
+cli.clear()
+cli.cyan("========================================")
+cli.cyan("   NEXUS TITAN VS CODE BUILDER v1.0     ")
+cli.cyan("========================================")
+out ""
+if io.exists("package.json")
+    out "[INFO] package.json found."
+else
+    cli.red("[ERROR] package.json not found!")
+    cli.red("Please run this script inside the 'nexus-vscode' directory.")
+    sys.exit()
+end
+if io.exists("README.md")
+    out "[INFO] README.md found and ready for integration."
+else
+    cli.yellow("[WARN] README.md missing. The extension will have no description.")
+end
+out ""
+cli.green(">> Starting Build Process...")
+out "Executing: npx @vscode/vsce package"
+out ""
+set result = sys.run("npx @vscode/vsce package")
+out ""
+if result == 0
+    cli.green("========================================")
+    cli.green("   BUILD SUCCESSFUL! 🚀                ")
+    cli.green("========================================")
+    out "You can now install the .vsix file in VS Code."
+else
+    cli.red("========================================")
+    cli.red("   BUILD FAILED! ❌                    ")
+    cli.red("========================================")
+    out "Please check the errors above."
+end

@@ -1,0 +1,73 @@
+{
+	"name": "Nexus Titan Dark",
+	"type": "dark",
+	"colors": {
+		"editor.background": "#030303",
+		"editor.foreground": "#f8f8f2",
+		"activityBar.background": "#000000",
+		"sideBar.background": "#050505",
+		"statusBar.background": "#00f2ff",
+		"statusBar.foreground": "#000000"
+	},
+	"tokenColors": [
+		{
+			"name": "Comment",
+			"scope": "comment",
+			"settings": {
+				"foreground": "#6272a4",
+				"fontStyle": "italic"
+			}
+		},
+		{
+			"name": "Keywords (set, out, etc)",
+			"scope": ["keyword.other.nexus", "keyword.control.nexus"],
+			"settings": {
+				"foreground": "#ff79c6",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "Strings",
+			"scope": "string",
+			"settings": {
+				"foreground": "#f1fa8c"
+			}
+		},
+		{
+			"name": "Module Names (math, sys)",
+			"scope": "support.class.nexus",
+			"settings": {
+				"foreground": "#bd93f9",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "Functions (sin, print, etc)",
+			"scope": "support.function.library.nexus",
+			"settings": {
+				"foreground": "#00f2ff"
+			}
+		},
+		{
+			"name": "Variables",
+			"scope": "variable.name.nexus",
+			"settings": {
+				"foreground": "#50fa7b"
+			}
+		},
+		{
+			"name": "Numbers",
+			"scope": "constant.numeric",
+			"settings": {
+				"foreground": "#ffb86c"
+			}
+		},
+		{
+			"name": "Operators",
+			"scope": "keyword.operator",
+			"settings": {
+				"foreground": "#ff5555"
+			}
+		}
+	]
+}
