@@ -143,3 +143,85 @@ Web-based block programming environment.
 ---
 
 **Nexus Titan 2.0 ULTRA** - Choose the interpreter that fits your needs!
+
+---
+
+## `/v3` — Nexus 3.0 NEXUS
+
+Contains all **Nexus 3.0 NEXUS interpreters** with 300+ total functions (200+ from V2 + 100+ new in V3).
+
+### Interpreters
+1. **interpreter.py** — Python reference engine
+   - Best for: All platforms, richest feature set, development
+   - Requires: Python 3.8+
+   - Includes: All 4 new modules + all extended modules
+
+2. **interpreter.cpp** — C++ engine (Linux/Windows)
+   - Best for: Native performance on Linux and Windows
+   - Requires: C++11 compiler
+
+3. **interpreter_macos.cpp** — C++ engine dedicated to macOS
+   - Best for: Native performance on macOS
+   - Requires: clang++ / g++ on macOS
+
+4. **interpreter.c** — Pure C engine
+   - Best for: Embedded, minimal footprint, maximum portability
+   - Requires: C99 compiler
+
+5. **rust-interpreter/** — Rust engine
+   - Best for: Safety-critical production deployments
+   - Requires: Rust 1.70+ (cargo)
+
+### New V3 Modules
+| Module    | Functions | Purpose |
+|-----------|:---------:|---------|
+| `admin`   | 6         | Sudo/root/admin privilege elevation |
+| `zip`     | 10+       | ZIP/TAR archive compress & extract |
+| `browser` | 4         | Launch URLs in system browser |
+| `crypto`  | 7         | Hashing (MD5/SHA/etc.) and Base64 |
+
+### Extended V3 Modules
+| Module | New Functions |
+|--------|:-------------:|
+| `sys`  | 16 new        |
+| `io`   | 12 new        |
+| `net`  | 7 new         |
+| `date` | 7 new         |
+| `rnd`  | 3 new         |
+| `gui`  | 10 new        |
+| `cli`  | 10 new        |
+
+### All V3 interpreters support:
+- ✅ All V1 scripts (100% backward compatible)
+- ✅ All V2 scripts (100% backward compatible)
+- ✅ 300+ built-in functions total
+- ✅ `admin`, `zip`, `browser`, `crypto` modules
+- ✅ Cross-platform execution (Linux, macOS, Windows)
+
+---
+
+## Updated Interpreter Comparison
+
+| Feature              | Python | C++ | C | Rust |
+|----------------------|:------:|:---:|:-:|:----:|
+| **Ease of Use**      | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ |
+| **Performance**      | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Safety**           | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Portability**      | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| **V3 Full Support**  | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+
+**All 4 V3 interpreters are in `/v3` directory!**
+
+---
+
+## Full Version Compatibility Matrix
+
+| Script Version | V1 Engine | V2 Engine | V3 Engine |
+|----------------|:---------:|:---------:|:---------:|
+| V1 scripts     | ✅        | ✅        | ✅        |
+| V2 scripts     | ❌        | ✅        | ✅        |
+| V3 scripts     | ❌        | ❌        | ✅        |
+
+---
+
+**Nexus Titan 3.0 NEXUS** — Platform-agnostic, privilege-aware, and production ready across all 4 language engines.

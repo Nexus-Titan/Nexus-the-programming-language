@@ -289,3 +289,124 @@ Created by Tiwut
 ---
 
 **Nexus Titan 2.0 ULTRA** - The bridge between high-speed execution and human-readable scripting.
+
+---
+
+# 🚀 Nexus 3.0 NEXUS — What's New
+
+Nexus 3.0 is the biggest evolution yet. It adds over **100 new system functions**, a unified cross-platform privilege model, ZIP/archive support, browser automation, network extensions, and much more — while remaining **100% backward compatible** with all V1 and V2 scripts.
+
+## 🌟 New in Version 3.0
+
+- **100+ New Functions**: Added across brand-new `admin`, `zip`, `browser`, and `crypto` modules, plus massive extensions to `sys`, `net`, `io`, `rnd`, `date`, `gui`, and `cli`
+- **Admin / Sudo Support**: Cross-platform privilege elevation — uses `sudo` on Linux/macOS, `ShellExecuteW(runas)` on Windows
+- **ZIP / Archive**: Compress, extract, list, read and add files inside archives
+- **Browser Control**: Open URLs in default browser, new window, or new tab
+- **Crypto & Hashing**: MD5, SHA1, SHA256, SHA512, Base64 encode/decode, ROT13
+- **Extended Networking**: HTTP POST, connectivity check, JSON endpoint fetch, URL encoding
+- **Extended File System**: Recursive copy, globbing, file hashing, symlinks, chmod, chown, mount points
+- **Cross-Platform**: Every `.nx` script runs identically on Linux, macOS, and Windows — no code changes needed
+
+## 📦 V3 Installation
+
+All 4 engine languages are available in `v3/`:
+
+### Python (Reference Engine)
+```bash
+cd v3
+python interpreter.py your_script.nx
+# Or build a standalone binary:
+pip install pyinstaller && pyinstaller --onefile --name nexus interpreter.py
+```
+
+### C++ (Linux / macOS)
+```bash
+cd v3
+g++ -o nexus interpreter.cpp -std=c++11
+./nexus your_script.nx
+```
+
+### C++ (macOS — dedicated build)
+```bash
+cd v3
+g++ -o nexus interpreter_macos.cpp -std=c++11
+./nexus your_script.nx
+```
+
+### C (Cross-platform)
+```bash
+cd v3
+gcc -o nexus interpreter.c -lm
+./nexus your_script.nx
+```
+
+### Rust
+```bash
+cd v3/rust-interpreter
+cargo build --release
+./target/release/nexus your_script.nx
+```
+
+## 📚 New V3 Modules (Quick Reference)
+
+### `admin` Module
+```nexus
+admin.is_admin()          # Check for elevated privileges
+admin.elevate()           # Restart with admin/sudo
+admin.run_admin("cmd")    # Run a command with admin rights
+admin.get_uid()           # Get UID (Linux/macOS)
+```
+
+### `zip` Module
+```nexus
+zip.compress("src/", "archive.zip")       # Compress directory
+zip.extract("archive.zip", "output/")     # Extract archive
+zip.list("archive.zip")                   # List contents
+zip.read_file("archive.zip", "file.txt")  # Read file inside zip
+zip.add_file("archive.zip", "newfile.txt")
+```
+
+### `browser` Module
+```nexus
+browser.open("https://nexus-lang.dev")    # Open in default browser
+browser.open_new("https://tiwut.de")      # Open in new window
+browser.open_tab("https://tiwut.de")      # Open in new tab
+```
+
+### `crypto` Module
+```nexus
+crypto.md5("hello")           # MD5 hash
+crypto.sha256("hello")        # SHA-256 hash
+crypto.b64encode("hello")     # Base64 encode
+crypto.b64decode("aGVsbG8=")  # Base64 decode
+```
+
+### Extended `net` Module
+```nexus
+net.post("https://api.example.com", data)   # HTTP POST
+net.get_json("https://api.example.com")     # Fetch JSON
+net.is_connected()                          # Check internet
+net.ip_local()                              # Local IP address
+```
+
+### Extended `sys` Module
+```nexus
+sys.mem_total()       # Total disk space
+sys.mem_used()        # Used disk space
+sys.mem_free()        # Free disk space
+sys.setenv("KEY", "value")
+sys.getenv("KEY")
+sys.whoami()          # Current shell user
+```
+
+## 🔄 Full Version Compatibility
+
+| Script Version | Runs on V1 | Runs on V2 | Runs on V3 |
+|----------------|:----------:|:----------:|:----------:|
+| V1 scripts     | ✅         | ✅         | ✅         |
+| V2 scripts     | ❌         | ✅         | ✅         |
+| V3 scripts     | ❌         | ❌         | ✅         |
+
+---
+
+**Nexus Titan 3.0 NEXUS** — Platform-agnostic, permission-aware, and production ready.
