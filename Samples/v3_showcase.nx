@@ -1,0 +1,154 @@
+
+out cli.bold("╔══════════════════════════════════════════╗")
+out cli.bold("║        NEXUS V3 FEATURE SHOWCASE         ║")
+out cli.bold("╚══════════════════════════════════════════╝")
+out cli.yellow("    This demonstrates features ONLY available in V3")
+out ""
+
+
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+out cli.bold("[1] ADMIN / PRIVILEGE SYSTEM  (NEW in V3)")
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+set is_root = admin.is_admin()
+out "  Running as admin/root: " + is_root
+set uid = admin.get_uid()
+out "  Current UID: " + uid
+set gid = admin.get_gid()
+out "  Current GID: " + gid
+out ""
+
+
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+out cli.bold("[2] CRYPTO & HASHING  (NEW in V3)")
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+set secret = "Nexus V3 is the future"
+out "  Input: " + secret
+set h_md5 = crypto.md5(secret)
+out "  MD5:    " + h_md5
+set h_sha1 = crypto.sha1(secret)
+out "  SHA1:   " + h_sha1
+set h_sha256 = crypto.sha256(secret)
+out "  SHA256: " + h_sha256
+set encoded = crypto.b64encode(secret)
+out "  Base64: " + encoded
+set decoded = crypto.b64decode(encoded)
+out "  Decoded: " + decoded
+set rot = crypto.rot13(secret)
+out "  ROT13:  " + rot
+out ""
+
+
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+out cli.bold("[3] ZIP / ARCHIVE SYSTEM  (NEW in V3)")
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+io.write("__v3_demo_file.txt", "Hello from Nexus V3! This file was created and zipped by the script.")
+out "  Created: __v3_demo_file.txt"
+zip.compress("__v3_demo_file.txt", "__v3_demo.zip")
+out "  Compressed to: __v3_demo.zip"
+set zip_size = io.size("__v3_demo.zip")
+out "  ZIP size (bytes): " + zip_size
+set zip_contents = zip.list("__v3_demo.zip")
+out "  Contents: " + zip_contents
+set file_hash = io.file_hash_sha256("__v3_demo_file.txt")
+out "  File SHA256: " + file_hash
+io.remove("__v3_demo_file.txt")
+zip.extract("__v3_demo.zip", "__v3_extracted")
+out "  Extracted to: __v3_extracted/"
+set extracted_content = io.read("__v3_extracted/__v3_demo_file.txt")
+out "  Content: " + extracted_content
+io.remove("__v3_demo.zip")
+io.rmdir("__v3_extracted")
+out "  Cleaned up all temp files."
+out ""
+
+
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+out cli.bold("[4] EXTENDED SYSTEM INFO  (NEW in V3)")
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+set whoami = sys.whoami()
+out "  Logged in as: " + whoami
+set home = io.get_home_dir()
+out "  Home directory: " + home
+set tmpdir = io.get_temp_dir()
+out "  Temp directory: " + tmpdir
+set mem_total = sys.mem_total()
+out "  Disk total (bytes): " + mem_total
+set mem_free = sys.mem_free()
+out "  Disk free (bytes): " + mem_free
+set is_64 = sys.is_64bit()
+out "  64-bit system: " + is_64
+set byteorder = sys.byteorder()
+out "  Byte order: " + byteorder
+set encoding = sys.getdefaultencoding()
+out "  Default encoding: " + encoding
+out ""
+
+
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+out cli.bold("[5] EXTENDED NETWORKING  (NEW in V3)")
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+set connected = net.is_connected()
+out "  Internet connected: " + connected
+set local_ip = net.ip_local()
+out "  Local IP address: " + local_ip
+set encoded_url = net.url("hello world/nexus v3")
+out "  URL encoded: " + encoded_url
+set decoded_url = net.unurl(encoded_url)
+out "  URL decoded: " + decoded_url
+out ""
+
+
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+out cli.bold("[6] UNIQUE IDs & RANDOM (NEW in V3)")
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+set uuid = rnd.uuid4()
+out "  UUID v4: " + uuid
+set hex_color = rnd.hex()
+out "  Random hex color: #" + hex_color
+set rand_bytes = rnd.bytes(8)
+out "  Random bytes (hex): " + rand_bytes
+out ""
+
+
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+out cli.bold("[7] EXTENDED DATE & TIME  (NEW in V3)")
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+set local_time = date.now()
+out "  Local time: " + local_time
+set utc_time = date.utc_now()
+out "  UTC time: " + utc_time
+set tz = date.timezone()
+out "  Timezone: " + tz
+set perf = date.perf_counter()
+out "  Perf counter: " + perf
+set leap = date.is_leap_year(2024)
+out "  Is 2024 a leap year? " + leap
+out ""
+
+
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+out cli.bold("[8] BROWSER CONTROL  (NEW in V3)")
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+set browser_name = browser.get()
+out "  Default browser: " + browser_name
+out "  (Skipping browser.open() in demo — would launch your browser)"
+out ""
+
+
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+out cli.bold("[9] FILE HASH VERIFICATION  (NEW in V3)")
+out cli.cyan("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+io.write("__hash_test.txt", "Nexus V3 integrity check")
+set md5_hash = io.file_hash_md5("__hash_test.txt")
+out "  File MD5:    " + md5_hash
+set sha_hash = io.file_hash_sha256("__hash_test.txt")
+out "  File SHA256: " + sha_hash
+io.remove("__hash_test.txt")
+out ""
+
+
+out cli.green("╔══════════════════════════════════════════╗")
+out cli.green("║   ALL V3 FEATURES DEMONSTRATED! ✓        ║")
+out cli.green("╚══════════════════════════════════════════╝")
+out cli.bold("  admin | crypto | zip | sys | net | rnd | date | browser | io")
+out ""

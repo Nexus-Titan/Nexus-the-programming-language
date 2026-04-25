@@ -238,7 +238,7 @@ string call_module(string mod, string func, string args_raw) {
   if (mod == "admin") {
     if (func == "is_admin") {
 #ifdef _WIN32
-      return "0"; // stub
+      return "0";
 #else
       return to_string(geteuid() == 0);
 #endif

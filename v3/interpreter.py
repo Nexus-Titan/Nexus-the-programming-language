@@ -202,7 +202,7 @@ class NexusTitanV3:
             'sec': lambda: datetime.datetime.now().second, 'ts': time.time, 'today': datetime.date.today,
             'weekday': lambda: datetime.datetime.now().weekday(), 'iso': lambda: datetime.datetime.now().isoformat(),
             'fmt': lambda f: datetime.datetime.now().strftime(str(f)),
-            'utc_now': lambda: str(datetime.datetime.utcnow()),
+            'utc_now': lambda: str(datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)),
             'from_ts': lambda ts: str(datetime.datetime.fromtimestamp(float(ts))),
             'sleep_ms': lambda ms: time.sleep(float(ms)/1000.0),
             'perf_counter': time.perf_counter,
