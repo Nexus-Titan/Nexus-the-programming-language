@@ -28,7 +28,6 @@ class NexusTitanV3:
     def setup_stdlib(self):
         self.stdlib = {}
         
-        # --- V1 / V2 Compatibility Math ---
         self.stdlib['math'] = {
             'sin': math.sin, 'cos': math.cos, 'tan': math.tan, 'asin': math.asin, 'acos': math.acos, 'atan': math.atan,
             'atan2': math.atan2, 'sinh': math.sinh, 'cosh': math.cosh, 'tanh': math.tanh, 'asinh': math.asinh, 
@@ -44,7 +43,6 @@ class NexusTitanV3:
             'is_close': math.isclose, 'prod': math.prod, 'dist': math.dist
         }
 
-        # --- V1 / V2 Compatibility String ---
         self.stdlib['str'] = {
             'len': len, 'upper': lambda s: str(s).upper(), 'lower': lambda s: str(s).lower(),
             'cap': lambda s: str(s).capitalize(), 'trim': lambda s: str(s).strip(),
@@ -70,7 +68,6 @@ class NexusTitanV3:
             'isident': lambda s: str(s).isidentifier(), 'isprint': lambda s: str(s).isprintable()
         }
 
-        # --- V3 Expanded System Functions ---
         self.stdlib['sys'] = {
             'os': lambda: platform.system(), 'ver': lambda: platform.version(), 'arch': lambda: platform.machine(),
             'user': lambda: os.getenv("USER") or os.getenv("USERNAME") or "NexusUser", 
@@ -106,7 +103,6 @@ class NexusTitanV3:
             'getfilesystemencoding': sys.getfilesystemencoding,
         }
 
-        # --- V3 Sudo / Admin Support ---
         self.stdlib['admin'] = {
             'is_admin': self.is_admin,
             'run_admin': self.run_admin,
@@ -120,7 +116,6 @@ class NexusTitanV3:
             'set_gid': lambda g: os.setgid(int(g)) if hasattr(os, 'setgid') else False,
         }
 
-        # --- V3 File System (IO/FS) Functions ---
         self.stdlib['io'] = {
             'read': lambda f: open(f, 'r', encoding='utf-8').read() if os.path.exists(f) else "Error",
             'write': lambda f,d: open(f, 'w', encoding='utf-8').write(str(d)), 
@@ -153,7 +148,6 @@ class NexusTitanV3:
             'mount_points': self.get_mount_points,
         }
 
-        # --- V3 ZIP / Archive Functions ---
         self.stdlib['zip'] = {
             'compress': self.zip_compress,
             'extract': self.zip_extract,
@@ -168,7 +162,6 @@ class NexusTitanV3:
             'get_archive_formats': lambda: [fmt[0] for fmt in shutil.get_archive_formats()],
         }
 
-        # --- V3 Browser / Web Functions ---
         self.stdlib['browser'] = {
             'open': webbrowser.open,
             'open_new': webbrowser.open_new,
@@ -176,7 +169,6 @@ class NexusTitanV3:
             'get': lambda: str(webbrowser.get()),
         }
 
-        # --- V3 Web & Net Functions ---
         self.stdlib['net'] = {
             'get': lambda u: urllib.request.urlopen(u).read().decode('utf-8'),
             'post': self.http_post,
@@ -194,7 +186,6 @@ class NexusTitanV3:
             'get_json': self.http_get_json,
         }
 
-        # --- V3 Date & Time ---
         self.stdlib['date'] = {
             'now': lambda: str(datetime.datetime.now()), 'year': lambda: datetime.datetime.now().year,
             'month': lambda: datetime.datetime.now().month, 'day': lambda: datetime.datetime.now().day,
@@ -202,7 +193,7 @@ class NexusTitanV3:
             'sec': lambda: datetime.datetime.now().second, 'ts': time.time, 'today': datetime.date.today,
             'weekday': lambda: datetime.datetime.now().weekday(), 'iso': lambda: datetime.datetime.now().isoformat(),
             'fmt': lambda f: datetime.datetime.now().strftime(str(f)),
-            'utc_now': lambda: str(datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)),
+            'utc_now': lambda: str(datetime.datetime.utcnow()),
             'from_ts': lambda ts: str(datetime.datetime.fromtimestamp(float(ts))),
             'sleep_ms': lambda ms: time.sleep(float(ms)/1000.0),
             'perf_counter': time.perf_counter,
@@ -211,7 +202,6 @@ class NexusTitanV3:
             'is_leap_year': lambda y: (int(y) % 4 == 0 and int(y) % 100 != 0) or (int(y) % 400 == 0),
         }
 
-        # --- V3 Random ---
         self.stdlib['rnd'] = {
             'val': random.random, 'int': random.randint, 'float': random.uniform,
             'choice': random.choice, 'shuffle': lambda l: (random.shuffle(l), l)[1] if isinstance(l, list) else l, 
@@ -222,7 +212,6 @@ class NexusTitanV3:
             'uuid4': lambda: __import__('uuid').uuid4().hex,
         }
 
-        # --- V3 Crypto / Hashing ---
         self.stdlib['crypto'] = {
             'md5': lambda s: hashlib.md5(str(s).encode()).hexdigest(),
             'sha1': lambda s: hashlib.sha1(str(s).encode()).hexdigest(),
@@ -233,7 +222,6 @@ class NexusTitanV3:
             'rot13': lambda s: __import__('codecs').encode(str(s), 'rot_13'),
         }
 
-        # --- V3 GUI ---
         if HAS_TK:
             self.stdlib['gui'] = {
                 'window': self.gui_window, 'label': self.gui_label, 'button': self.gui_button,
@@ -260,7 +248,6 @@ class NexusTitanV3:
         else:
             self.stdlib['gui'] = {}
 
-        # --- V3 JSON ---
         self.stdlib['json'] = {
             'parse': json.loads, 'str': json.dumps, 'load': lambda f: json.load(open(f)),
             'save': lambda f,d: json.dump(d, open(f, 'w')),
@@ -269,7 +256,6 @@ class NexusTitanV3:
             'get_keys': lambda j: list(json.loads(j).keys()) if isinstance(j, str) else list(j.keys()),
         }
 
-        # --- V3 CLI ---
         self.stdlib['cli'] = {
             'clear': lambda: os.system('cls' if os.name == 'nt' else 'clear'),
             'red': lambda s: f"\033[91m{s}\033[0m", 'green': lambda s: f"\033[92m{s}\033[0m",
@@ -287,9 +273,6 @@ class NexusTitanV3:
             'cursor_left': lambda n: print(f"\033[{n}D", end=""),
         }
 
-    # ==========================
-    # --- V3 Admin Functions ---
-    # ==========================
     def is_admin(self):
         try:
             if os.name == 'nt':
@@ -322,9 +305,6 @@ class NexusTitanV3:
         except Exception as e:
             return -1
 
-    # ==========================
-    # --- V3 ZIP Functions ---
-    # ==========================
     def zip_compress(self, src, dst):
         with zipfile.ZipFile(dst, 'w', zipfile.ZIP_DEFLATED) as zipf:
             if os.path.isdir(src):
@@ -355,9 +335,6 @@ class NexusTitanV3:
             zipf.write(file_path, arcname or os.path.basename(file_path))
         return True
 
-    # ==========================
-    # --- V3 Net Functions ---
-    # ==========================
     def http_post(self, url, data):
         if isinstance(data, dict): data = urllib.parse.urlencode(data).encode()
         elif isinstance(data, str): data = data.encode()
@@ -390,9 +367,6 @@ class NexusTitanV3:
         else:
             return [line.split()[1] for line in subprocess.getoutput("df -h").split('\n')[1:]]
 
-    # ==========================
-    # --- V3 GUI Extension ---
-    # ==========================
     def gui_entry(self, name, default=""):
         if self.root:
             if not hasattr(self, 'gui_entries'): self.gui_entries = {}
@@ -549,3 +523,4 @@ if __name__ == "__main__":
     else:
         print("Nexus Titan Language v3.0-NEXUS")
         print("Usage: nexus <script.nx>")
+
