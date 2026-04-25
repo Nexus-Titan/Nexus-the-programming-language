@@ -1,4 +1,4 @@
-# 🚀 Nexus 3.0 NEXUS — What's New
+# 🚀 Nexus Titan 3.0 NEXUS
 
 Nexus 3.0 is the biggest evolution yet. It adds over **100 new system functions**, a unified cross-platform privilege model, ZIP/archive support, browser automation, network extensions, and much more — while remaining **100% backward compatible** with all V1 and V2 scripts.
 
