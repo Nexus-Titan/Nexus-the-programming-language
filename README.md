@@ -1,8 +1,8 @@
-# 🚀 Nexus Titan 3.0 NEXUS
+# Nexus Titan 3.0 NEXUS
 
 Nexus 3.0 is the biggest evolution yet. It adds over **100 new system functions**, a unified cross-platform privilege model, ZIP/archive support, browser automation, network extensions, and much more — while remaining **100% backward compatible** with all V1 and V2 scripts.
 
-## 🌟 New in Version 3.0
+## New in Version 3.0
 
 - **100+ New Functions**: Added across brand-new `admin`, `zip`, `browser`, and `crypto` modules, plus massive extensions to `sys`, `net`, `io`, `rnd`, `date`, `gui`, and `cli`
 - **Admin / Sudo Support**: Cross-platform privilege elevation — uses `sudo` on Linux/macOS, `ShellExecuteW(runas)` on Windows
@@ -13,7 +13,7 @@ Nexus 3.0 is the biggest evolution yet. It adds over **100 new system functions*
 - **Extended File System**: Recursive copy, globbing, file hashing, symlinks, chmod, chown, mount points
 - **Cross-Platform**: Every `.nx` script runs identically on Linux, macOS, and Windows — no code changes needed
 
-## 📦 V3 Installation
+## V3 Installation
 
 All 4 engine languages are available in `v3/`:
 
@@ -105,7 +105,7 @@ sys.getenv("KEY")
 sys.whoami()          # Current shell user
 ```
 
-## 🔄 Full Version Compatibility
+## Full Version Compatibility
 
 | Script Version | Runs on V1 | Runs on V2 | Runs on V3 |
 |----------------|:----------:|:----------:|:----------:|
@@ -119,11 +119,11 @@ sys.whoami()          # Current shell user
 
 ---
 
-# Nexus Titan 2.0 ULTRA 🚀
+# Nexus Titan 2.0 ULTRA
 
 The next-generation scripting language with **200+ built-in functions**, powerful control flow, and dual interpreters (Python & C++).
 
-## 🌟 What's New in 2.0 ULTRA
+## What's New in 2.0 ULTRA
 
 - **200+ Functions**: Comprehensive standard library across 9 modules
 - **Control Flow**: Full support for if-else statements and loops
@@ -135,7 +135,7 @@ The next-generation scripting language with **200+ built-in functions**, powerfu
 - **Enhanced GUI**: Warnings, errors, and advanced dialogs
 - **Backward Compatible**: All old scripts still work!
 
-## 📦 Installation
+## Installation
 
 Nexus 2.0 ULTRA offers **4 different interpreters** to choose from:
 
@@ -166,7 +166,7 @@ cargo build --release
 cargo run --release your_script.nx
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Nexus-the-programming-language/
@@ -188,7 +188,7 @@ Nexus-the-programming-language/
 ```
 
 
-## 📚 Language Reference
+## Language Reference
 
 ### Core Commands
 - `set variable = value` - Assign variables
@@ -297,7 +297,7 @@ cli.blue(text)      # Blue colored text
 cli.yellow(text)    # Yellow colored text
 ```
 
-## 🎯 Example Programs
+## Example Programs
 
 ### Calculator
 ```nexus
@@ -349,7 +349,7 @@ end
 out "Result: " + result
 ```
 
-## 🛠️ Nexus Studio
+## Nexus Studio
 
 Visual block-based programming environment for Nexus. Access it at:
 https://tiwut.github.io/Nexus-the-programming-language/Nexus-Studio/
@@ -361,12 +361,12 @@ Features:
 - Import/Export .nx files
 - Save/Load projects
 
-## 📖 Documentation
+## Documentation
 
 Full documentation with searchable function reference available at:
 https://tiwut.github.io/Nexus-the-programming-language/
 
-## 🎮 Sample Applications
+## Sample Applications
 
 Check the `Samples/` directory for example programs:
 - `calculator.nx` - Advanced calculator with trig functions
@@ -375,7 +375,7 @@ Check the `Samples/` directory for example programs:
 - `guessing_game.nx` - Interactive number guessing game
 - `ultra_test.nx` - Comprehensive feature showcase
 
-## 🔧 Operators
+## Operators
 
 ### Arithmetic
 - `+` Addition
@@ -391,17 +391,17 @@ Check the `Samples/` directory for example programs:
 - `>=` Greater or equal
 - `<=` Less or equal
 
-## 🚀 Performance
+## Performance
 
 - **Python Interpreter**: Fast development, cross-platform
 - **C++ Interpreter**: Maximum performance, native speed
 - **Backward Compatible**: All v1.x scripts work in v2.0
 
-## 📝 License
+## License
 
 MIT License - See LICENSE file for details
 
-## 👨‍💻 Author
+## Author
 
 Created by Tiwut
 - Website: https://tiwut.de
