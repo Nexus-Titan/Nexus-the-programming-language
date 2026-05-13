@@ -352,7 +352,7 @@ out "Result: " + result
 ## Nexus Studio
 
 Visual block-based programming environment for Nexus. Access it at:
-https://tiwut.github.io/Nexus-the-programming-language/Nexus-Studio/
+[Nexus Studio](https://tiwut.org/nexus-studio)
 
 Features:
 - Drag-and-drop block programming
@@ -364,7 +364,7 @@ Features:
 ## Documentation
 
 Full documentation with searchable function reference available at:
-https://tiwut.github.io/Nexus-the-programming-language/
+[Nexus Website](https://tiwut.org/nexus)
 
 ## Sample Applications
 
@@ -404,7 +404,7 @@ MIT License - See LICENSE file for details
 ## Author
 
 Created by Tiwut
-- Website: https://tiwut.de
+- Website: https://tiwut.org
 - GitHub: https://github.com/tiwut
 
 ---
