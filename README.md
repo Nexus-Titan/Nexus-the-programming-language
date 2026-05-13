@@ -53,7 +53,7 @@ cargo build --release
 ./target/release/nexus your_script.nx
 ```
 
-## 📚 New V3 Modules (Quick Reference)
+## New V3 Modules (Quick Reference)
 
 ### `admin` Module
 ```nexus
