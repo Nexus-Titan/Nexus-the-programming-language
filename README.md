@@ -2,7 +2,7 @@
 
 Nexus 3.0 is the biggest evolution yet. It adds over **100 new system functions**, a unified cross-platform privilege model, ZIP/archive support, browser automation, network extensions, and much more — while remaining **100% backward compatible** with all V1 and V2 scripts.
 
-## New in Version 3.0
+## Version 3.0
 
 - **100+ New Functions**: Added across brand-new `admin`, `zip`, `browser`, and `crypto` modules, plus massive extensions to `sys`, `net`, `io`, `rnd`, `date`, `gui`, and `cli`
 - **Admin / Sudo Support**: Cross-platform privilege elevation — uses `sudo` on Linux/macOS, `ShellExecuteW(runas)` on Windows
@@ -53,7 +53,7 @@ cargo build --release
 ./target/release/nexus your_script.nx
 ```
 
-## New V3 Modules (Quick Reference)
+## V3 Modules (Quick Reference)
 
 ### `admin` Module
 ```nexus
@@ -123,7 +123,7 @@ sys.whoami()          # Current shell user
 
 The next-generation scripting language with **200+ built-in functions**, powerful control flow, and dual interpreters (Python & C++).
 
-## What's New in 2.0 ULTRA
+## 2.0 ULTRA
 
 - **200+ Functions**: Comprehensive standard library across 9 modules
 - **Control Flow**: Full support for if-else statements and loops
@@ -403,10 +403,10 @@ MIT License - See LICENSE file for details
 
 ## Author
 
-Created by Tiwut
+Created by Tiwut and Nexus-Titan
 - Website: https://tiwut.org
 - GitHub: https://github.com/tiwut
 
 ---
 
-**Nexus Titan 2.0 ULTRA** - The bridge between high-speed execution and human-readable scripting.
+The bridge between high-speed execution and human-readable scripting.
