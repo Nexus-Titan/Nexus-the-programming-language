@@ -9,7 +9,7 @@
 ")
 out "--- Nexus V4 ULTRA: 20-Library Suite Demo ---"
 import "nx_suite.nx"
-nx_suite.crawl("https://nexus.io", 2)
+nx_suite.crawl("https://tiwut.org", 2)
 nx_suite.draw_rect(10, 10, 100, 50, "blue")
 import "py_suite.py"
 set gray = py_suite.grayscale(255, 128, 64)
