@@ -9,7 +9,6 @@ except ImportError:
     tk = messagebox = simpledialog = filedialog = None
     HAS_TK = False
 import ctypes
-
 class NexusTitanV3:
     def __init__(self):
         self.vars = {
@@ -24,10 +23,8 @@ class NexusTitanV3:
         self.funcs = {}
         self.root = None
         self.setup_stdlib()
-
     def setup_stdlib(self):
         self.stdlib = {}
-        
         self.stdlib['math'] = {
             'sin': math.sin, 'cos': math.cos, 'tan': math.tan, 'asin': math.asin, 'acos': math.acos, 'atan': math.atan,
             'atan2': math.atan2, 'sinh': math.sinh, 'cosh': math.cosh, 'tanh': math.tanh, 'asinh': math.asinh, 
@@ -42,7 +39,6 @@ class NexusTitanV3:
             'erf': math.erf, 'erfc': math.erfc, 'gamma': math.gamma, 'lgamma': math.lgamma,
             'is_close': math.isclose, 'prod': math.prod, 'dist': math.dist
         }
-
         self.stdlib['str'] = {
             'len': len, 'upper': lambda s: str(s).upper(), 'lower': lambda s: str(s).lower(),
             'cap': lambda s: str(s).capitalize(), 'trim': lambda s: str(s).strip(),
@@ -67,7 +63,6 @@ class NexusTitanV3:
             'isascii': lambda s: str(s).isascii(), 'isdecimal': lambda s: str(s).isdecimal(),
             'isident': lambda s: str(s).isidentifier(), 'isprint': lambda s: str(s).isprintable()
         }
-
         self.stdlib['sys'] = {
             'os': lambda: platform.system(), 'ver': lambda: platform.version(), 'arch': lambda: platform.machine(),
             'user': lambda: os.getenv("USER") or os.getenv("USERNAME") or "NexusUser", 
@@ -102,7 +97,6 @@ class NexusTitanV3:
             'getdefaultencoding': sys.getdefaultencoding,
             'getfilesystemencoding': sys.getfilesystemencoding,
         }
-
         self.stdlib['admin'] = {
             'is_admin': self.is_admin,
             'run_admin': self.run_admin,
@@ -115,7 +109,6 @@ class NexusTitanV3:
             'set_uid': lambda u: os.setuid(int(u)) if hasattr(os, 'setuid') else False,
             'set_gid': lambda g: os.setgid(int(g)) if hasattr(os, 'setgid') else False,
         }
-
         self.stdlib['io'] = {
             'read': lambda f: open(f, 'r', encoding='utf-8').read() if os.path.exists(f) else "Error",
             'write': lambda f,d: open(f, 'w', encoding='utf-8').write(str(d)), 
@@ -147,7 +140,6 @@ class NexusTitanV3:
             'stat': lambda f: str(os.stat(f)),
             'mount_points': self.get_mount_points,
         }
-
         self.stdlib['zip'] = {
             'compress': self.zip_compress,
             'extract': self.zip_extract,
@@ -161,14 +153,12 @@ class NexusTitanV3:
             'unpack_archive': shutil.unpack_archive,
             'get_archive_formats': lambda: [fmt[0] for fmt in shutil.get_archive_formats()],
         }
-
         self.stdlib['browser'] = {
             'open': webbrowser.open,
             'open_new': webbrowser.open_new,
             'open_tab': webbrowser.open_new_tab,
             'get': lambda: str(webbrowser.get()),
         }
-
         self.stdlib['net'] = {
             'get': lambda u: urllib.request.urlopen(u).read().decode('utf-8'),
             'post': self.http_post,
@@ -185,7 +175,6 @@ class NexusTitanV3:
             'request_headers': self.http_get_headers,
             'get_json': self.http_get_json,
         }
-
         self.stdlib['date'] = {
             'now': lambda: str(datetime.datetime.now()), 'year': lambda: datetime.datetime.now().year,
             'month': lambda: datetime.datetime.now().month, 'day': lambda: datetime.datetime.now().day,
@@ -201,7 +190,6 @@ class NexusTitanV3:
             'timezone': lambda: time.tzname[0],
             'is_leap_year': lambda y: (int(y) % 4 == 0 and int(y) % 100 != 0) or (int(y) % 400 == 0),
         }
-
         self.stdlib['rnd'] = {
             'val': random.random, 'int': random.randint, 'float': random.uniform,
             'choice': random.choice, 'shuffle': lambda l: (random.shuffle(l), l)[1] if isinstance(l, list) else l, 
@@ -211,7 +199,6 @@ class NexusTitanV3:
             'hex': lambda: "%06x" % random.randint(0, 0xFFFFFF),
             'uuid4': lambda: __import__('uuid').uuid4().hex,
         }
-
         self.stdlib['crypto'] = {
             'md5': lambda s: hashlib.md5(str(s).encode()).hexdigest(),
             'sha1': lambda s: hashlib.sha1(str(s).encode()).hexdigest(),
@@ -221,7 +208,6 @@ class NexusTitanV3:
             'b64decode': lambda s: __import__('base64').b64decode(str(s).encode()).decode(),
             'rot13': lambda s: __import__('codecs').encode(str(s), 'rot_13'),
         }
-
         if HAS_TK:
             self.stdlib['gui'] = {
                 'window': self.gui_window, 'label': self.gui_label, 'button': self.gui_button,
@@ -247,7 +233,6 @@ class NexusTitanV3:
             }
         else:
             self.stdlib['gui'] = {}
-
         self.stdlib['json'] = {
             'parse': json.loads, 'str': json.dumps, 'load': lambda f: json.load(open(f)),
             'save': lambda f,d: json.dump(d, open(f, 'w')),
@@ -255,7 +240,6 @@ class NexusTitanV3:
             'pretty': lambda d: json.dumps(d, indent=4),
             'get_keys': lambda j: list(json.loads(j).keys()) if isinstance(j, str) else list(j.keys()),
         }
-
         self.stdlib['cli'] = {
             'clear': lambda: os.system('cls' if os.name == 'nt' else 'clear'),
             'red': lambda s: f"\033[91m{s}\033[0m", 'green': lambda s: f"\033[92m{s}\033[0m",
@@ -272,7 +256,6 @@ class NexusTitanV3:
             'cursor_right': lambda n: print(f"\033[{n}C", end=""),
             'cursor_left': lambda n: print(f"\033[{n}D", end=""),
         }
-
     def is_admin(self):
         try:
             if os.name == 'nt':
@@ -281,7 +264,6 @@ class NexusTitanV3:
                 return os.geteuid() == 0
         except:
             return False
-
     def elevate(self):
         if self.is_admin(): return True
         try:
@@ -293,7 +275,6 @@ class NexusTitanV3:
         except Exception as e:
             print("Elevation failed:", e)
             return False
-
     def run_admin(self, cmd):
         if self.is_admin():
             return subprocess.run(cmd, shell=True).returncode
@@ -304,7 +285,6 @@ class NexusTitanV3:
                 return subprocess.run(f"sudo {cmd}", shell=True).returncode
         except Exception as e:
             return -1
-
     def zip_compress(self, src, dst):
         with zipfile.ZipFile(dst, 'w', zipfile.ZIP_DEFLATED) as zipf:
             if os.path.isdir(src):
@@ -316,46 +296,37 @@ class NexusTitanV3:
             else:
                 zipf.write(src, os.path.basename(src))
         return True
-
     def zip_extract(self, src, dst):
         with zipfile.ZipFile(src, 'r') as zipf:
             zipf.extractall(dst)
         return True
-
     def zip_list(self, src):
         with zipfile.ZipFile(src, 'r') as zipf:
             return zipf.namelist()
-
     def zip_read_file(self, src, filename):
         with zipfile.ZipFile(src, 'r') as zipf:
             return zipf.read(filename).decode('utf-8')
-
     def zip_add_file(self, zip_path, file_path, arcname=None):
         with zipfile.ZipFile(zip_path, 'a') as zipf:
             zipf.write(file_path, arcname or os.path.basename(file_path))
         return True
-
     def http_post(self, url, data):
         if isinstance(data, dict): data = urllib.parse.urlencode(data).encode()
         elif isinstance(data, str): data = data.encode()
         req = urllib.request.Request(url, data=data)
         return urllib.request.urlopen(req).read().decode('utf-8')
-        
     def is_connected(self):
         try:
             urllib.request.urlopen('http://8.8.8.8', timeout=1)
             return True
         except:
             return False
-            
     def http_get_headers(self, url):
         req = urllib.request.Request(url, method='HEAD')
         return str(urllib.request.urlopen(req).headers)
-
     def http_get_json(self, url):
         res = urllib.request.urlopen(url).read().decode('utf-8')
         return json.loads(res)
-
     def get_mount_points(self):
         if os.name == 'nt':
             drives = []
@@ -366,7 +337,6 @@ class NexusTitanV3:
             return drives
         else:
             return [line.split()[1] for line in subprocess.getoutput("df -h").split('\n')[1:]]
-
     def gui_entry(self, name, default=""):
         if self.root:
             if not hasattr(self, 'gui_entries'): self.gui_entries = {}
@@ -374,28 +344,22 @@ class NexusTitanV3:
             e.insert(0, str(default))
             e.pack(pady=5)
             self.gui_entries[name] = e
-
     def gui_get_entry(self, name):
         if hasattr(self, 'gui_entries') and name in self.gui_entries:
             return self.gui_entries[name].get()
         return ""
-
     def get_sys_info(self):
         info = f"Nexus OS: {self.vars['OS']} | Version: {self.vars['VER']} | Arch: {self.vars['ARCH']} | User: {self.vars['USER']}"
         print(f"Nexus V3 › {info}")
         return info
-
     def gui_window(self, title, geom="400x300"):
         self.root = tk.Tk()
         self.root.title(title)
         self.root.geometry(geom)
-
     def gui_label(self, text):
         if self.root: tk.Label(self.root, text=text).pack(pady=10)
-
     def gui_button(self, text, func_name):
         if self.root: tk.Button(self.root, text=text, command=lambda: self.run(self.funcs[func_name])).pack(pady=5)
-
     def tokenize(self, code):
         mod_keys = '|'.join(self.stdlib.keys())
         tokens_def = [
@@ -411,7 +375,6 @@ class NexusTitanV3:
         ]
         reg = '|'.join('(?P<%s>%s)' % p for p in tokens_def)
         return [m for m in ((mo.lastgroup, mo.group()) for mo in re.finditer(reg, code)) if m[0] not in ('SKIP', 'COMMENT')]
-
     def run(self, tokens):
         i = 0
         while i < len(tokens):
@@ -467,7 +430,6 @@ class NexusTitanV3:
             elif kind == 'ID' and val in self.funcs:
                 self.run(self.funcs[val]); i += 1
             else: i += 1
-
     def parse_module_call(self, tokens, i):
         full_name = tokens[i][1]
         mod, func = full_name.split('.')
@@ -478,14 +440,12 @@ class NexusTitanV3:
             arg_res, i = self.expr(tokens, i); args.append(arg_res)
         if i < len(tokens): i += 1
         return self.call_stdlib(mod, func, args), i
-
     def call_stdlib(self, mod, func, args):
         if mod in self.stdlib and func in self.stdlib[mod]:
             f = self.stdlib[mod][func]
             try: return f(*args) if callable(f) else f
             except Exception as e: return f"Error: {e}"
         return ""
-
     def expr(self, tokens, i):
         if i >= len(tokens): return "", i
         res = ""
@@ -495,7 +455,6 @@ class NexusTitanV3:
         elif kind == 'NUMBER': res = float(val) if '.' in val else int(val); i += 1
         elif kind == 'STRING': res = val.strip('"'); i += 1
         elif kind == 'ID': res = self.vars.get(val, ""); i += 1
-        
         while i < len(tokens) and tokens[i][0] == 'OP':
             op = tokens[i][1]; i += 1
             right, i = self.expr(tokens, i)
@@ -514,7 +473,6 @@ class NexusTitanV3:
                 elif op == '<=': res = (res <= right)
             except: res = str(res) + str(right)
         return res, i
-
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         with open(sys.argv[1], 'r', encoding='utf-8') as f:
@@ -523,4 +481,3 @@ if __name__ == "__main__":
     else:
         print("Nexus Titan Language v3.0-NEXUS")
         print("Usage: nexus <script.nx>")
-

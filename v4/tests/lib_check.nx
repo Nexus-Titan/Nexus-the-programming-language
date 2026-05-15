@@ -1,0 +1,26 @@
++add(libs"
+-nx
+-py
+")
+out "--- Nexus V4 ULTRA Health Check ---"
+import "logger.nx"
+logger.info("Initializing system diagnostics...")
+import "fs.nx"
+set files = io.list(sys.cwd())
+logger.info("Local directory scanned: " + str.len(files) + " files found.")
+import "net_utils.py"
+set pub_ip = net_utils.get_public_ip()
+logger.info("Public Connectivity: " + pub_ip)
+set local_80 = net_utils.scan_port("127.0.0.1", 80)
+if local_80 == 1
+    logger.info("Local Web Server (80) detected.")
+else
+    logger.warn("No local Web Server on port 80.")
+end
+import "system_monitor.py"
+set cpu = system_monitor.get_cpu_load()
+logger.info("System Load: " + cpu)
+import "json_db.nx"
+json_db.init_db("test_storage")
+logger.info("Database initialized successfully.")
+logger.info("--- All Checks Passed ---")

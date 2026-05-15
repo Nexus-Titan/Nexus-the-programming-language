@@ -1,9 +1,7 @@
 # File Manager - Nexus 2.0 ULTRA
 out "=== Nexus File Manager ==="
 out ""
-
 set filename = "nexus_data.txt"
-
 # Check if file exists
 if io.exists(filename)
     out "File found: " + filename
@@ -14,44 +12,36 @@ else
     out "File does not exist. Creating new file..."
     io.write(filename, "")
 end
-
 out ""
 out "1. Read file"
 out "2. Write to file"
 out "3. Append to file"
 out "4. File info"
 out "5. Exit"
-
 set choice = input "Select option: "
-
 if choice == "1"
     set data = io.read(filename)
     out "File contents:"
     out data
 end
-
 if choice == "2"
     set text = input "Enter text to write: "
     io.write(filename, text)
     out "File written successfully!"
 end
-
 if choice == "3"
     set text = input "Enter text to append: "
     io.append(filename, text)
     out "Text appended successfully!"
 end
-
 if choice == "4"
     out "Filename: " + filename
     out "Exists: " + io.exists(filename)
     out "Size: " + io.size(filename) + " bytes"
     out "Extension: " + io.ext(filename)
 end
-
 if choice == "5"
     out "Exiting..."
 end
-
 out ""
 out "Operation complete!"

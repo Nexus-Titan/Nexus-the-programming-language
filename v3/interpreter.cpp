@@ -18,13 +18,10 @@
 #define popen _popen
 #define pclose _pclose
 #endif
-
 using namespace std;
-
 map<string, string> vars;
 map<string, vector<string>> funcs;
 vector<pair<string, string>> gui_buttons;
-
 string trim(string s) {
   if (s.empty())
     return s;
@@ -34,26 +31,21 @@ string trim(string s) {
     s.erase(last + 1);
   return s;
 }
-
 string to_lower(string s) {
   transform(s.begin(), s.end(), s.begin(), ::tolower);
   return s;
 }
-
 string to_upper(string s) {
   transform(s.begin(), s.end(), s.begin(), ::toupper);
   return s;
 }
-
 string resolve_complex(string input);
-
 string call_module(string mod, string func, string args_raw) {
   vector<string> args;
   stringstream ss(args_raw);
   string arg;
   while (getline(ss, arg, ','))
     args.push_back(resolve_complex(trim(arg)));
-
   if (mod == "math") {
     if (func == "pi")
       return "3.1415926535";
@@ -234,7 +226,6 @@ string call_module(string mod, string func, string args_raw) {
     if (func == "button" && args.size() >= 2)
       gui_buttons.push_back({args[0], args[1]});
   }
-
   if (mod == "admin") {
     if (func == "is_admin") {
 #ifdef _WIN32
@@ -269,33 +260,26 @@ string call_module(string mod, string func, string args_raw) {
   }
   return "";
 }
-
 string resolve_complex(string input) {
   input = trim(input);
   if (input.empty())
     return "";
-
   smatch m;
   if (regex_search(input, m, regex(R"((\w+)\.(\w+)\((.*)\))"))) {
     return call_module(m[1], m[2], m[3]);
   }
-
   if (input.front() == '"' && input.back() == '"')
     return input.substr(1, input.size() - 2);
-
   size_t plus = input.find('+');
   if (plus != string::npos) {
     return resolve_complex(input.substr(0, plus)) +
            resolve_complex(input.substr(plus + 1));
   }
-
   if (vars.count(input))
     return vars[input];
   return input;
 }
-
 void runNexus(vector<string> lines);
-
 void show_cpp_dashboard() {
   while (true) {
     string cmd =
@@ -319,7 +303,6 @@ void show_cpp_dashboard() {
         runNexus(funcs[btn.second]);
   }
 }
-
 void runNexus(vector<string> lines) {
   for (size_t i = 0; i < lines.size(); ++i) {
     string line = trim(lines[i]);
@@ -365,7 +348,6 @@ void runNexus(vector<string> lines) {
     }
   }
 }
-
 int main(int argc, char *argv[]) {
   if (argc < 2) {
     cout << "Nexus Titan Language v3.0-NEXUS (CPP)" << endl;

@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 import re, sys, os, tkinter as tk
 from tkinter import messagebox, simpledialog
-
 class NexusTitan:
     def __init__(self):
         self.vars = {"OS": "Linux", "VER": "1.1"}
         self.funcs = {}
         self.root = None
-
     def tokenize(self, code):
         tokens_def = [
             ('COMMENT', r'#.*'), ('KEYWORD', r'\b(fn|set|out|if|else|loop|end|wait|input)\b'),
@@ -18,7 +16,6 @@ class NexusTitan:
         ]
         reg = '|'.join('(?P<%s>%s)' % p for p in tokens_def)
         return [m for m in ((mo.lastgroup, mo.group()) for mo in re.finditer(reg, code)) if m[0] not in ('SKIP', 'COMMENT')]
-
     def run(self, tokens):
         i = 0
         while i < len(tokens):
@@ -48,7 +45,6 @@ class NexusTitan:
             elif kind == 'ID' and val in self.funcs:
                 self.run(self.funcs[val]); i += 1
             else: i += 1
-
     def parse_module_call(self, tokens, i):
         mod = tokens[i][1]; func = tokens[i+2][1]; i += 4
         args = []
@@ -57,7 +53,6 @@ class NexusTitan:
             arg_res, i = self.expr(tokens, i); args.append(arg_res)
         if i < len(tokens): i += 1
         return self.call_mod(mod, func, args), i
-
     def expr(self, tokens, i):
         if i >= len(tokens): return "", i
         res = ""
@@ -67,12 +62,10 @@ class NexusTitan:
         elif kind == 'NUMBER': res = int(val); i += 1
         elif kind == 'STRING': res = val.strip('"'); i += 1
         elif kind == 'ID': res = self.vars.get(val, ""); i += 1
-        
         while i < len(tokens) and tokens[i][0] == 'OP' and tokens[i][1] == '+':
             i += 1
             right, i = self.expr(tokens, i); res = str(res) + str(right)
         return res, i
-
     def call_mod(self, mod, func, args):
         if mod == 'gui':
             if func == 'window':
@@ -92,7 +85,6 @@ class NexusTitan:
                     with open(args[0], 'r') as f: return f.read().replace('\n', ' | ')
                 return "No Events"
         return ""
-
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         with open(sys.argv[1], 'r') as f: NexusTitan().run(NexusTitan().tokenize(f.read()))

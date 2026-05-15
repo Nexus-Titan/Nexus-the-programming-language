@@ -1,59 +1,47 @@
 # Text Analyzer - Nexus 2.0 ULTRA
 # Comprehensive text analysis tool
-
 out "=== Nexus Text Analyzer ==="
 out ""
-
 set text = input "Enter text to analyze: "
-
 # Basic statistics
 out "--- Basic Statistics ---"
 set length = str.len(text)
 out "Length: " + length + " characters"
-
 # Case analysis
 set upper_text = str.upper(text)
 set lower_text = str.lower(text)
 out "Uppercase: " + upper_text
 out "Lowercase: " + lower_text
-
 # String manipulation
 out ""
 out "--- String Manipulation ---"
 set reversed = str.reverse(text)
 out "Reversed: " + reversed
-
 set trimmed = str.trim(text)
 out "Trimmed: " + trimmed
-
 # Search functionality
 out ""
 set search = input "Enter text to search for: "
 set position = str.find(text, search)
-
 if position >= 0
     out "Found '" + search + "' at position: " + position
 else
     out "Text not found!"
 end
-
 # Character checks
 out ""
 out "--- Character Analysis ---"
 out "Is numeric: " + str.isnum(text)
 out "Is alphabetic: " + str.isalpha(text)
-
 # Repeat demo
 out ""
 out "--- Repeat Demo ---"
 set repeat_count = 3
 set repeated = str.repeat("*", repeat_count)
 out "Repeated pattern: " + repeated
-
 # Save results
 out ""
 set save_choice = input "Save results to file? (yes/no): "
-
 if save_choice == "yes"
     set filename = "analysis_results.txt"
     set report = "Text Analysis Report\n"
@@ -61,13 +49,11 @@ if save_choice == "yes"
     set report = report + "Length: " + length + "\n"
     set report = report + "Uppercase: " + upper_text + "\n"
     set report = report + "Reversed: " + reversed + "\n"
-    
     io.write(filename, report)
     out "Results saved to: " + filename
     gui.msg("Analysis complete! Results saved.")
 else
     out "Results not saved."
 end
-
 out ""
 out "Analysis complete!"
