@@ -1,0 +1,24 @@
+out "--- Nexus V4 Unified System ---"
+set myType = api.type()
+set myEngine = api.engine()
+set myOS = api.platform()
+out "Type: " + myType
+out "Engine: " + myEngine
+out "OS: " + myOS
+fn check_platform()
+    if api.is_web()
+        out "Running in a Browser Environment"
+        gui.msg("Hello from Nexus Web!")
+    else
+        out "Running in a Native PC Environment"
+        out "Current User: " + sys.user()
+    end
+end
+check_platform()
+out "Calculating with Unified Math..."
+set result = math.sqrt(144)
+out "Square root of 144 is: " + result
+out "API Cross-Call Simulation:"
+set response = api.call("web", "updateUI", "Hello from Script")
+out "Response: " + response
+out "--- End of Demo ---"

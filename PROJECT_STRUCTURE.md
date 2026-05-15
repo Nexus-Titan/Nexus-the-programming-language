@@ -216,12 +216,32 @@ Contains all **Nexus 3.0 NEXUS interpreters** with 300+ total functions (200+ fr
 
 ## Full Version Compatibility Matrix
 
-| Script Version | V1 Engine | V2 Engine | V3 Engine |
-|----------------|:---------:|:---------:|:---------:|
-| V1 scripts     | ✅        | ✅        | ✅        |
-| V2 scripts     | ❌        | ✅        | ✅        |
-| V3 scripts     | ❌        | ❌        | ✅        |
+| Script Version | V1 Engine | V2 Engine | V3 Engine | V4 Engine |
+|----------------|:---------:|:---------:|:---------:|:---------:|
+| V1 scripts     | ✅        | ✅        | ✅        | ✅        |
+| V2 scripts     | ❌        | ✅        | ✅        | ✅        |
+| V3 scripts     | ❌        | ❌        | ✅        | ✅        |
+| V4 scripts     | ❌        | ❌        | ❌        | ✅        |
 
 ---
 
-**Nexus Titan 3.0 NEXUS** — Platform-agnostic, privilege-aware, and production ready across all 4 language engines.
+## `/v4` — Nexus 4.0 UNIFIED
+
+Contains the **Nexus 4.0 UNIFIED interpreters** with a focus on cross-engine parity and a real API bridge between PC and Web.
+
+### Key Innovations
+1. **The `api` Module**: A shared interface across all engines.
+   - `api.type()`: Identify environment (PC/Web).
+   - `api.engine()`: Identify backend (Python/JS/CPP).
+   - `api.call()`: Standardized cross-engine communication.
+2. **Unified Core Engine**: The same `.nx` code now runs natively in the browser via `interpreter.js`.
+3. **Advanced Control Flow**: Added `while` loop support and improved `if-else` nesting.
+
+### Interpreters
+1. **interpreter.py**: Reference implementation for PC.
+2. **interpreter.js**: Native Web engine, integrated into NEXUS-WA.
+3. **interpreter.cpp**: High-performance native engine for Linux/Windows.
+
+---
+
+**Nexus Titan 4.0 UNIFIED** — One Language, Any Platform.

@@ -5,13 +5,10 @@
 #include <fstream>
 #include <regex>
 #include <sstream>
-
 using namespace std;
-
 map<string, string> vars;
 map<string, vector<string>> funcs;
 vector<pair<string, string>> gui_buttons;
-
 string trim(string s) {
     if (s.empty()) return s;
     s.erase(0, s.find_first_not_of(" \t\r\n"));
@@ -19,7 +16,6 @@ string trim(string s) {
     if (last != string::npos) s.erase(last + 1);
     return s;
 }
-
 string read_file_content(string filename) {
     ifstream f(filename);
     if (!f.is_open()) return "Empty";
@@ -27,17 +23,14 @@ string read_file_content(string filename) {
     while(getline(f, line)) content += line + " | ";
     return content.empty() ? "Empty" : content;
 }
-
 string resolve_complex(string input) {
     input = trim(input);
-    
     if (input.find("io.read(") != string::npos) {
         size_t start = input.find("(") + 1;
         size_t end = input.find_last_of(")");
         string filename_var = input.substr(start, end - start);
         return read_file_content(resolve_complex(filename_var));
     }
-
     string result = "";
     stringstream ss(input); string part;
     while (getline(ss, part, '+')) {
@@ -48,9 +41,7 @@ string resolve_complex(string input) {
     }
     return result;
 }
-
 void runNexus(vector<string> lines);
-
 void show_cpp_dashboard() {
     while (true) {
         string cmd = "zenity --list --title=\"Nexus Dashboard\" --column=\"Actions\" ";
@@ -63,7 +54,6 @@ void show_cpp_dashboard() {
         for (auto& btn : gui_buttons) if (btn.first == choice) runNexus(funcs[btn.second]);
     }
 }
-
 void runNexus(vector<string> lines) {
     for (size_t i = 0; i < lines.size(); ++i) {
         string line = trim(lines[i]);
@@ -107,7 +97,6 @@ void runNexus(vector<string> lines) {
         }
     }
 }
-
 int main(int argc, char* argv[]) {
     if (argc < 2) return 1;
     ifstream f(argv[1]); vector<string> l; string s;

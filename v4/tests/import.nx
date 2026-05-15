@@ -1,0 +1,20 @@
++add(
+libs"
+-nx 
+-py 
+-js 
+")
+out "--- Nexus V4 Multi-Language Demo ---"
+import "utils.nx"
+utils.welcome(sys.user())
+if api.is_pc()
+    import "ai_helper.py"
+    set response = ai_helper.chat("hi")
+    out "AI Response: " + response
+    set sentiment = ai_helper.analyze_sentiment("Nexus is very fast and great!")
+    out "Sentiment: " + sentiment
+end
+set radius = 10
+set area = utils.calculate_area(radius)
+out "Area of circle with radius 10: " + area
+out "--- Integration Successful ---"

@@ -3,7 +3,6 @@ import re, sys, os, tkinter as tk, math, time, json, platform, shutil, random, s
 from tkinter import messagebox, simpledialog, filedialog
 import urllib.request as request
 import datetime
-
 class NexusTitan:
     def __init__(self):
         self.vars = {
@@ -18,10 +17,8 @@ class NexusTitan:
         self.funcs = {}
         self.root = None
         self.setup_stdlib()
-
     def setup_stdlib(self):
         self.stdlib = {}
-        
         math_map = {
             'sin': math.sin, 'cos': math.cos, 'tan': math.tan, 'asin': math.asin, 'acos': math.acos, 'atan': math.atan,
             'atan2': math.atan2, 'sinh': math.sinh, 'cosh': math.cosh, 'tanh': math.tanh, 'asinh': math.asinh, 
@@ -37,7 +34,6 @@ class NexusTitan:
             'is_close': math.isclose, 'prod': math.prod, 'dist': math.dist
         }
         self.stdlib['math'] = math_map
-
         str_map = {
             'len': len, 'upper': lambda s: str(s).upper(), 'lower': lambda s: str(s).lower(),
             'cap': lambda s: str(s).capitalize(), 'trim': lambda s: str(s).strip(),
@@ -63,7 +59,6 @@ class NexusTitan:
             'isident': lambda s: str(s).isidentifier(), 'isprint': lambda s: str(s).isprintable()
         }
         self.stdlib['str'] = str_map
-
         sys_map = {
             'os': lambda: platform.system(), 'ver': lambda: platform.version(), 'arch': lambda: platform.machine(),
             'user': lambda: os.getenv("USER") or os.getenv("USERNAME") or "NexusUser", 
@@ -77,7 +72,6 @@ class NexusTitan:
             'mem': lambda: shutil.disk_usage(os.getcwd())
         }
         self.stdlib['sys'] = sys_map
-
         io_map = {
             'read': lambda f: open(f, 'r').read() if os.path.exists(f) else "Error",
             'write': lambda f,d: open(f, 'w').write(str(d)), 'append': lambda f,d: open(f, 'a').write(str(d)),
@@ -90,7 +84,6 @@ class NexusTitan:
             'split': os.path.split, 'dirname': os.path.dirname, 'realpath': os.path.realpath
         }
         self.stdlib['io'] = io_map
-
         net_map = {
             'get': lambda u: request.urlopen(u).read().decode(),
             'download': lambda u,f: request.urlretrieve(u, f),
@@ -99,7 +92,6 @@ class NexusTitan:
             'url': lambda u: request.quote(u), 'unurl': lambda u: request.unquote(u)
         }
         self.stdlib['net'] = net_map
-
         date_map = {
             'now': lambda: str(datetime.datetime.now()), 'year': lambda: datetime.datetime.now().year,
             'month': lambda: datetime.datetime.now().month, 'day': lambda: datetime.datetime.now().day,
@@ -109,7 +101,6 @@ class NexusTitan:
             'fmt': lambda f: datetime.datetime.now().strftime(str(f))
         }
         self.stdlib['date'] = date_map
-
         rnd_map = {
             'val': random.random, 'int': random.randint, 'float': random.uniform,
             'choice': random.choice, 'shuffle': random.shuffle, 'seed': random.seed,
@@ -117,7 +108,6 @@ class NexusTitan:
             'range': random.randrange
         }
         self.stdlib['rnd'] = rnd_map
-
         gui_map = {
             'window': self.gui_window, 'label': self.gui_label, 'button': self.gui_button,
             'msg': lambda m: messagebox.showinfo("Nexus", str(m)),
@@ -131,14 +121,12 @@ class NexusTitan:
             'clear': lambda: [c.destroy() for c in self.root.winfo_children()] if self.root else None
         }
         self.stdlib['gui'] = gui_map
-
         json_map = {
             'parse': json.loads, 'str': json.dumps, 'load': lambda f: json.load(open(f)),
             'save': lambda f,d: json.dump(d, open(f, 'w')),
             'valid': lambda s: (lambda s: True if json.loads(s) else True)(s)
         }
         self.stdlib['json'] = json_map
-
         cli_map = {
             'clear': lambda: os.system('cls' if os.name == 'nt' else 'clear'),
             'red': lambda s: f"\033[91m{s}\033[0m", 'green': lambda s: f"\033[92m{s}\033[0m",
@@ -147,24 +135,18 @@ class NexusTitan:
             'yellow': lambda s: f"\033[93m{s}\033[0m", 'cyan': lambda s: f"\033[96m{s}\033[0m"
         }
         self.stdlib['cli'] = cli_map
-
-
     def get_sys_info(self):
         info = f"Nexus OS: {self.vars['OS']} | Version: {self.vars['VER']} | Arch: {self.vars['ARCH']}"
         print(f"Nexus › {info}")
         return info
-
     def gui_window(self, title, geom="400x300"):
         self.root = tk.Tk()
         self.root.title(title)
         self.root.geometry(geom)
-
     def gui_label(self, text):
         if self.root: tk.Label(self.root, text=text).pack(pady=10)
-
     def gui_button(self, text, func_name):
         if self.root: tk.Button(self.root, text=text, command=lambda: self.run(self.funcs[func_name])).pack(pady=5)
-
     def tokenize(self, code):
         tokens_def = [
             ('COMMENT', r'#.*'), 
@@ -179,7 +161,6 @@ class NexusTitan:
         ]
         reg = '|'.join('(?P<%s>%s)' % p for p in tokens_def)
         return [m for m in ((mo.lastgroup, mo.group()) for mo in re.finditer(reg, code)) if m[0] not in ('SKIP', 'COMMENT')]
-
     def run(self, tokens):
         i = 0
         while i < len(tokens):
@@ -232,7 +213,6 @@ class NexusTitan:
             elif kind == 'ID' and val in self.funcs:
                 self.run(self.funcs[val]); i += 1
             else: i += 1
-
     def parse_module_call(self, tokens, i):
         full_name = tokens[i][1]
         mod, func = full_name.split('.')
@@ -243,14 +223,12 @@ class NexusTitan:
             arg_res, i = self.expr(tokens, i); args.append(arg_res)
         if i < len(tokens): i += 1
         return self.call_stdlib(mod, func, args), i
-
     def call_stdlib(self, mod, func, args):
         if mod in self.stdlib and func in self.stdlib[mod]:
             f = self.stdlib[mod][func]
             try: return f(*args) if callable(f) else f
             except Exception as e: return f"Error: {e}"
         return ""
-
     def expr(self, tokens, i):
         if i >= len(tokens): return "", i
         res = ""
@@ -260,7 +238,6 @@ class NexusTitan:
         elif kind == 'NUMBER': res = float(val) if '.' in val else int(val); i += 1
         elif kind == 'STRING': res = val.strip('"'); i += 1
         elif kind == 'ID': res = self.vars.get(val, ""); i += 1
-        
         while i < len(tokens) and tokens[i][0] == 'OP':
             op = tokens[i][1]; i += 1
             right, i = self.expr(tokens, i)
@@ -279,7 +256,6 @@ class NexusTitan:
                 elif op == '<=': res = (res <= right)
             except: res = str(res) + str(right)
         return res, i
-
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         with open(sys.argv[1], 'r', encoding='utf-8') as f:

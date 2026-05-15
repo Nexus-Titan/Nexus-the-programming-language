@@ -1,0 +1,24 @@
++add(libs"
+-nx
+-py
+")
+import "system_monitor.py"
+fn update_stats()
+    set cpu = system_monitor.get_cpu_load()
+    set ram = system_monitor.get_ram_usage()
+    out "CPU: " + cpu + " | RAM: " + ram
+end
+fn run_dashboard()
+    gui.window("Nexus Ultra Dashboard", "500x400")
+    gui.label("--- Nexus System Performance ---")
+    set cpu = system_monitor.get_cpu_load()
+    gui.label("Current CPU: " + cpu)
+    set disk = system_monitor.get_disk_report()
+    gui.button("Refresh Stats", "update_stats")
+    gui.button("Exit Dashboard", "gui_exit")
+    gui.run()
+end
+fn gui_exit()
+    sys.exit()
+end
+run_dashboard()

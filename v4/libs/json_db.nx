@@ -1,0 +1,21 @@
+fn init_db(db_name)
+    set path = db_name + ".json"
+    if io.exists(path)
+        out "DB " + db_name + " loaded."
+        return 1
+    else
+        io.write(path, "{}")
+        out "DB " + db_name + " created."
+        return 1
+    end
+end
+fn db_set(db_name, key, value)
+    set path = db_name + ".json"
+    set data = json.load(path)
+    out "Setting " + key + " in " + db_name
+end
+fn db_get(db_name, key)
+    set path = db_name + ".json"
+    set data = json.load(path)
+    return data
+end

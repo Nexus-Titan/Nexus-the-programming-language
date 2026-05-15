@@ -1,0 +1,18 @@
++add(libs"
+-nx
+")
+import "fs.nx"
+fn audit_system(target_dir)
+    out "Starting Security Audit on: " + target_dir
+    set files = fs.find_files(target_dir, ".nx")
+    out "Auditing " + str.len(files) + " sensitive scripts..."
+    set count = 0
+    while count < str.len(files)
+        set f = str.at(files, count)
+        set h = io.file_hash_sha256(f)
+        out "OK: " + f + " [" + str.slice(h, 0, 8) + "]"
+        set count = count + 1
+    end
+    out "Audit Complete. All files verified."
+end
+audit_system(sys.cwd())

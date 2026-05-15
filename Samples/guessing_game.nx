@@ -2,33 +2,26 @@
 out "=== Number Guessing Game ==="
 out "I'm thinking of a number between 1 and 100..."
 out ""
-
 set secret = rnd.int(1, 100)
 set attempts = 0
 set max_attempts = 10
 set won = 0
-
 loop max_attempts
     set attempts = attempts + 1
     set guess = input "Attempt " + attempts + "/" + max_attempts + " - Enter your guess: "
-    
     if guess == secret
         out "Congratulations! You guessed it!"
         set won = 1
         break
     end
-    
     if guess < secret
         out "Too low! Try again."
     end
-    
     if guess > secret
         out "Too high! Try again."
     end
-    
     out ""
 end
-
 if won == 1
     out "You won in " + attempts + " attempts!"
     gui.msg("Victory! You found the number!")
