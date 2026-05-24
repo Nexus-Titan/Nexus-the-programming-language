@@ -12,6 +12,11 @@ run with:
 ```bash
 nexus
 ```
+## Install with `yay` (Arch Linux)
+
+```bash
+yay -S nexus4-git
+```
 
 ## Project Structure
 
