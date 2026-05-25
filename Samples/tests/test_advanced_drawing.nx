@@ -1,0 +1,23 @@
+gui.window("Nexus Canvas View", "600x500")
+gui.bg_color("#1f2937")
+gui.canvas_color("#111827")
+gui.font("helvetica", "14")
+gui.resizable("1")
+
+gui.draw_gradient("10", "10", "500", "440", "#1e3a8a", "#0f172a", "0")
+gui.draw_gradient("30", "30", "200", "120", "#3b82f6", "#1d4ed8", "1")
+
+gui.draw_rounded_rect("50", "50", "160", "80", "12", "#10b981")
+gui.draw_rounded_rect_outline("40", "40", "180", "100", "15", "#fbbf24")
+
+gui.draw_blur("260", "30", "220", "120", "4")
+gui.draw_rounded_rect_outline("260", "30", "220", "120", "10", "#a78bfa")
+gui.draw_text("280", "70", "Glassmorphic Card", "#ffffff")
+gui.draw_text("280", "95", "Real Soft Software Blur", "#d1d5db")
+
+gui.draw_triangle("50", "220", "150", "220", "100", "320", "#ec4899")
+gui.draw_triangle_outline("200", "220", "300", "220", "250", "320", "#38bdf8")
+
+gui.draw_text("140", "380", "Nexus Drawing Engine V4", "#f43f5e")
+
+gui.run()

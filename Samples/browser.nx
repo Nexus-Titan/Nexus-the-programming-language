@@ -1,0 +1,21 @@
+
+
+gui.window("Nexus Modern Hypermedia Web Browser", "450x420")
+gui.entry("url_input", "https://tiwut.org/nexus")
+gui.button("Go to Webpage", "navigate_url")
+gui.draw_text(10, 15, "Nexus Titan HTML rendering engine is ready.", "green")
+gui.draw_text(10, 35, "Enter an address above and click 'Go'!", "yellow")
+gui.draw_text(10, 55, "Standard HTML tags h1, p, a, br, hr are supported.", "cyan")
+gui.run()
+
+fn navigate_url()
+    set target_url = gui.get_entry("url_input")
+    out "Loading target address: " + target_url
+    
+    set ok = web.load(target_url)
+    if ok == "1"
+        out "Webpage rendered successfully!"
+    else
+        out "Failed to load webpage!"
+    end
+end

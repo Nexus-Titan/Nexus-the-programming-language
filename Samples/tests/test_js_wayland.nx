@@ -1,0 +1,51 @@
+gui.window("Nexus Web Browser", "600x500")
+gui.bg_color("#1f2937")
+gui.canvas_color("#111827")
+gui.font("helvetica", "14")
+gui.resizable("1")
+
+set html = "
+<div style='padding: 10px; margin: 10px;'>
+  <h1 style='color: #60a5fa;'>Nexus HTML Document</h1>
+  <p style='color: #d1d5db;'>Natively parsed HTML elements executing inside C++ environment:</p>
+  <br>
+  <div style='background-color: #1e293b; border-color: #3b82f6; width: 520; height: 260;'>
+    <p style='color: #38bdf8;'>Interactive Form:</p>
+    <br>
+    <input type='text' id='username' value='dev_user' placeholder='Enter username...' style='width: 180; height: 28; background-color: #0f172a; border-color: #475569; color: #38bdf8;'>
+    <input type='password' id='password' value='supersecret' placeholder='Enter password...' style='width: 180; height: 28; background-color: #0f172a; border-color: #475569; color: #e2e8f0;'>
+    <br><br>
+    <button onclick='js_trigger_alert' style='width: 150; height: 32; background-color: #10b981; border-color: #34d399; color: #ffffff;'>Trigger JS Alert</button>
+    <button onclick='js_autofill()' style='width: 150; height: 32; background-color: #6366f1; border-color: #818cf8; color: #ffffff;'>JS Autofill</button>
+    <button onclick='nexus_fallback' style='width: 150; height: 32; background-color: #ef4444; border-color: #f87171; color: #ffffff;'>Nexus Native Callback</button>
+  </div>
+</div>
+
+<script>
+function js_trigger_alert() {
+  console.log(\"Triggering alert popup...\");
+  alert(\"Hello from Nexus Embedded JavaScript Engine!\");
+}
+
+function js_autofill() {
+  console.log(\"Autofilling username and password...\");
+  document.getElementById(\"username\").value = \"autofilled_admin\";
+  document.getElementById(\"password\").value = \"securepassword123\";
+}
+</script>
+"
+
+web.render(html)
+
+fn nexus_fallback()
+    set user = gui.get_entry("username")
+    set pass = gui.get_entry("password")
+    out "=============================="
+    out "  Nexus Native Callback Triggered"
+    out "=============================="
+    out "Username: " + user
+    out "Password (masked in GUI): " + pass
+    out "=============================="
+end
+
+gui.run()
