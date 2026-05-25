@@ -1,4 +1,3 @@
-# Advanced Calculator - Nexus 2.0 ULTRA
 out "=== Nexus Advanced Calculator ==="
 out ""
 fn show_menu()

@@ -1,8 +1,6 @@
-# File Manager - Nexus 2.0 ULTRA
 out "=== Nexus File Manager ==="
 out ""
 set filename = "nexus_data.txt"
-# Check if file exists
 if io.exists(filename)
     out "File found: " + filename
     set content = io.read(filename)

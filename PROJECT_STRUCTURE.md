@@ -1,247 +1,62 @@
-# Nexus Project Structure
+# Nexus Project Structure (v4.1.3)
+
+Nexus version 4.1.3 is a highly streamlined, zero-dependency environment. All major modules, libraries, and compilation utilities are centered at the root level.
 
 ## Directory Overview
 
-### `/v1` - Legacy Version
-Contains the original Nexus 1.x implementation for backward compatibility.
+### Root Directory
+- `interpreter.cpp`: The unified native C++ compiler and execution engine (v4.1.3).
+- `download_and_extract.nx`: Demo script downloading a source tarball and extracting it via OS-native `tar` commands.
+- `README.md`: The primary user manual and install guide.
+- `SYNTAX.md`: The complete language reference guide.
+- `CHANGELOG.md`: The detailed history of changes.
+- `PROJECT_STRUCTURE.md`: This file.
+- `LICENSE`: MIT License.
 
-**Files:**
-- Original interpreter and examples
-- Legacy documentation
+### `/libs` - Standard Extension Modules
+This folder contains pre-built scripts and extensions that enrich the language capability:
+- **Nexus Extensions**:
+  - `logger.nx`: Standardized application and database logging.
+  - `fs.nx`: Advanced filesystem query and management.
+  - `json_db.nx`: High-performance JSON-based local database persistence.
+  - `http_client.nx`: Comprehensive REST API client.
+  - `nx_suite.nx`: Drawing tools and graphic/web crawlers.
+- **Python Extensions** (Executed dynamically via the subprocess bridge):
+  - `system_monitor.py`: Operating system and CPU performance stats.
+  - `net_utils.py`: Network port scanners and connection diagnostics.
+  - `ai_helper.py`: Local natural language assistant.
+  - `py_suite.py`: Math modeling and parallel threading wrapper.
+- **`/libs/src`** - Cross-Language Bridge Components:
+  - `native_core.cpp`: Low-level RLE compression and physics structures.
+  - `rust_engine.rs`: Rust encryption keys wrapper.
+  - `EnterpriseLib.java`: Enterprise SQL builder mockup.
+  - `performance_bits.asm`: Low-level arithmetic speed blocks.
 
-**Status:** Maintained for compatibility, not actively developed
+### `/Samples` - Example Applications
+- `calculator.nx`: Trigonometric and arithmetic console calculator.
+- `file_manager.nx`: Directory scanning and configuration backups.
+- `guessing_game.nx`: Random number guessing game with CLI box GUI.
+- `text_analyzer.nx`: String manipulation and validation.
+- `todo.nx`: Terminal database todo task list.
+- **`/Samples/tests`** - Integration Test Suite:
+  - `lib_check.nx`: Comprehensive health check of core library modules.
+  - `master_check.nx`: Integration validation of all 20 language environments.
+  - `api_demo.nx`: Web-to-PC API cross-call test.
+  - `security_audit.nx`: Integrity glob checking with SHA-256 validation.
 
----
+### `/nexus-vscode` - IDE Support
+Official syntax highlighting extension and themed developer workspace:
+- `syntaxes/nexus.tmLanguage.json`: TextMate grammar for VS Code.
+- `themes/nexus-titan-theme.json`: Custom deep dark theme.
+- `build.nx`: Dynamic package builder script.
 
-### `/v2` - Nexus 2.0 ULTRA
-Contains **all Nexus 2.0 ULTRA interpreters** with 200+ functions.
+## Getting Started
 
-**Interpreters:**
-1. **interpreter.py** - Python implementation
-   - Best for: Development, testing, rapid prototyping
-   - Requires: Python 3.7+
-   
-2. **interpreter.cpp** - C++ implementation
-   - Best for: Production, performance-critical applications
-   - Requires: C++11 compiler (g++, clang++, MSVC)
-   
-3. **interpreter.c** - C implementation
-   - Best for: Embedded systems, maximum portability
-   - Requires: C99 compiler (gcc, clang)
-
-4. **rust-interpreter/** - Rust implementation
-   - Best for: Modern applications requiring safety guarantees
-   - Requires: Rust 1.70+ (cargo)
-   - Structure:
-     ```
-     rust-interpreter/
-     ├── src/
-     │   └── main.rs
-     ├── Cargo.toml
-     └── README.md
-     ```
-
-**All interpreters support:**
-- ✅ 200+ built-in functions
-- ✅ Control flow (if-else, loops)
-- ✅ Function definitions
-- ✅ All 9 standard library modules
-- ✅ 100% backward compatible with v1
-
----
-
-### `/Samples` - Example Programs
-Collection of example Nexus scripts demonstrating features.
-
-**Available Examples:**
-- `calculator.nx` - Advanced calculator with trigonometry
-- `file_manager.nx` - File I/O operations
-- `system_monitor.nx` - System information display
-- `guessing_game.nx` - Interactive game
-- `text_analyzer.nx` - String manipulation showcase
-
----
-
-### `/Nexus-Studio` - Visual Programming
-Web-based block programming environment.
-
-**Features:**
-- Drag-and-drop block programming
-- Real-time code generation
-- Support for all 200+ functions
-- Import/Export .nx files
-- Save/Load projects
-
-**Access:** Open `index.html` in browser or visit online version
-
----
-
-### Root Files
-
-**Documentation:**
-- `README.md` - Main project documentation
-- `CHANGELOG.md` - Detailed version history
-- `LICENSE` - MIT License
-
-**Website:**
-- `index.html` - Project website with searchable documentation
-- `main.avif` - Background image
-
-**Scripts:**
-- `test.nx` - Original test script (v1 compatible)
-- `ultra_test.nx` - Comprehensive v2 feature showcase
-
----
-
-## Quick Start Guide
-
-### For Beginners
-1. Start with **Python interpreter** (`v2/interpreter.py`)
-2. Try the example scripts in `/Samples`
-3. Use **Nexus-Studio** for visual programming
-
-### For Production
-1. Use **C++ interpreter** (`v2/interpreter.cpp`) for best performance
-2. Or use **Rust interpreter** (`v2/rust-interpreter`) for safety + performance
-3. Compile to native binary for distribution
-
-### For Embedded Systems
-1. Use **C interpreter** (`v2/interpreter.c`)
-2. Minimal dependencies
-3. Small binary footprint
-
----
-
-## Choosing an Interpreter
-
-| Feature | Python | C++ | C | Rust |
-|---------|--------|-----|---|------|
-| **Ease of Use** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ |
-| **Performance** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
-| **Safety** | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ |
-| **Portability** | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| **Binary Size** | N/A | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| **Development Speed** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ |
-
-**All 4 interpreters are in `/v2` directory!**
-
----
-
-## Version Compatibility
-
-- **v1 scripts** → Work on all v2 interpreters ✅
-- **v2 scripts** → Work on all v2 interpreters ✅
-- **All interpreters** → Produce identical output ✅
-
----
-
-## Contributing
-
-- `/v2/README.md` - Documentation for all 4 interpreters
-- `/v2/rust-interpreter/README.md` - Rust-specific details
-
----
-
-**Nexus Titan 2.0 ULTRA** - Choose the interpreter that fits your needs!
-
----
-
-## `/v3` — Nexus 3.0 NEXUS
-
-Contains all **Nexus 3.0 NEXUS interpreters** with 300+ total functions (200+ from V2 + 100+ new in V3).
-
-### Interpreters
-1. **interpreter.py** — Python reference engine
-   - Best for: All platforms, richest feature set, development
-   - Requires: Python 3.8+
-   - Includes: All 4 new modules + all extended modules
-
-2. **interpreter.cpp** — C++ engine (Linux/Windows)
-   - Best for: Native performance on Linux and Windows
-   - Requires: C++11 compiler
-
-3. **interpreter_macos.cpp** — C++ engine dedicated to macOS
-   - Best for: Native performance on macOS
-   - Requires: clang++ / g++ on macOS
-
-4. **interpreter.c** — Pure C engine
-   - Best for: Embedded, minimal footprint, maximum portability
-   - Requires: C99 compiler
-
-5. **rust-interpreter/** — Rust engine
-   - Best for: Safety-critical production deployments
-   - Requires: Rust 1.70+ (cargo)
-
-### New V3 Modules
-| Module    | Functions | Purpose |
-|-----------|:---------:|---------|
-| `admin`   | 6         | Sudo/root/admin privilege elevation |
-| `zip`     | 10+       | ZIP/TAR archive compress & extract |
-| `browser` | 4         | Launch URLs in system browser |
-| `crypto`  | 7         | Hashing (MD5/SHA/etc.) and Base64 |
-
-### Extended V3 Modules
-| Module | New Functions |
-|--------|:-------------:|
-| `sys`  | 16 new        |
-| `io`   | 12 new        |
-| `net`  | 7 new         |
-| `date` | 7 new         |
-| `rnd`  | 3 new         |
-| `gui`  | 10 new        |
-| `cli`  | 10 new        |
-
-### All V3 interpreters support:
-- ✅ All V1 scripts (100% backward compatible)
-- ✅ All V2 scripts (100% backward compatible)
-- ✅ 300+ built-in functions total
-- ✅ `admin`, `zip`, `browser`, `crypto` modules
-- ✅ Cross-platform execution (Linux, macOS, Windows)
-
----
-
-## Updated Interpreter Comparison
-
-| Feature              | Python | C++ | C | Rust |
-|----------------------|:------:|:---:|:-:|:----:|
-| **Ease of Use**      | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ |
-| **Performance**      | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
-| **Safety**           | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ |
-| **Portability**      | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| **V3 Full Support**  | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-
-**All 4 V3 interpreters are in `/v3` directory!**
-
----
-
-## Full Version Compatibility Matrix
-
-| Script Version | V1 Engine | V2 Engine | V3 Engine | V4 Engine |
-|----------------|:---------:|:---------:|:---------:|:---------:|
-| V1 scripts     | ✅        | ✅        | ✅        | ✅        |
-| V2 scripts     | ❌        | ✅        | ✅        | ✅        |
-| V3 scripts     | ❌        | ❌        | ✅        | ✅        |
-| V4 scripts     | ❌        | ❌        | ❌        | ✅        |
-
----
-
-## `/v4` — Nexus 4.0 UNIFIED
-
-Contains the **Nexus 4.0 UNIFIED interpreters** with a focus on cross-engine parity and a real API bridge between PC and Web.
-
-### Key Innovations
-1. **The `api` Module**: A shared interface across all engines.
-   - `api.type()`: Identify environment (PC/Web).
-   - `api.engine()`: Identify backend (Python/JS/CPP).
-   - `api.call()`: Standardized cross-engine communication.
-2. **Unified Core Engine**: The same `.nx` code now runs natively in the browser via `interpreter.js`.
-3. **Advanced Control Flow**: Added `while` loop support and improved `if-else` nesting.
-
-### Interpreters
-1. **interpreter.py**: Reference implementation for PC.
-2. **interpreter.js**: Native Web engine, integrated into NEXUS-WA.
-3. **interpreter.cpp**: High-performance native engine for Linux/Windows.
-
----
-
-**Nexus Titan 4.0 UNIFIED** — One Language, Any Platform.
+To build the native binary:
+```bash
+g++ -std=c++11 -Wall -O3 interpreter.cpp -o nexus
+```
+To run integration diagnostics:
+```bash
+./nexus Samples/tests/lib_check.nx
+```

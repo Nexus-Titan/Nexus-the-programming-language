@@ -1,12 +1,9 @@
-# System Monitor - Nexus 2.0 ULTRA
 out "=== Nexus System Monitor ==="
 out ""
-# Display system information
 out "Operating System: " + sys.os()
 out "Current User: " + sys.user()
 out "Current Directory: " + sys.cwd()
 out ""
-# Date and Time
 out "=== Date & Time ==="
 out "Full timestamp: " + date.now()
 out "Year: " + date.year()
@@ -16,7 +13,6 @@ out "Hour: " + date.hour()
 out "Minute: " + date.min()
 out "Second: " + date.sec()
 out ""
-# String manipulation demo
 out "=== String Operations ==="
 set msg = "Nexus Titan 2.0 ULTRA"
 out "Original: " + msg
@@ -25,13 +21,11 @@ out "Uppercase: " + str.upper(msg)
 out "Lowercase: " + str.lower(msg)
 out "Reversed: " + str.reverse(msg)
 out ""
-# Math demonstrations
 out "=== Math Constants ==="
 out "PI: " + math.pi()
 out "E: " + math.e()
 out "TAU: " + math.tau()
 out ""
-# Random numbers
 out "=== Random Numbers ==="
 loop 5
     set rand_num = rnd.int(1, 100)

@@ -1,6 +1,3 @@
-# ==========================
-# NEXUS TODO & EVENT MANAGER
-# ==========================
 set app_title = "Nexus Event Planner"
 set data_file = "events.txt"
 out "Starting " + app_title
