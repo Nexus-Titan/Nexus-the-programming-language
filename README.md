@@ -15,7 +15,26 @@ It also hosts a **native X11 / Win32 graphics suite** for premium styled windows
 
 ## 1. Quick Installation (Mac & Linux)
 
-Install using Homebrew:
+### Prerequisites — X11 (required for GUI features)
+
+Homebrew does not ship X11 libraries, so you must install them from your system package manager **before** running `brew install nexus4`.
+
+**Linux** — install the X11 development headers:
+```bash
+# Debian / Ubuntu
+sudo apt install libx11-dev
+
+# Fedora / RHEL
+sudo dnf install libX11-devel
+
+# Arch / Manjaro
+sudo pacman -S libx11
+```
+
+**macOS** — install [XQuartz](https://www.xquartz.org), then log out and back in so the `DISPLAY` variable is set.
+
+### Install via Homebrew
+
 ```bash
 brew tap Nexus-Titan/tab https://github.com/Nexus-Titan/homebrew-tap.git
 brew update
