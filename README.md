@@ -4,13 +4,13 @@ Nexus is a cross-platform, multi-engine programming language designed for seamle
 
 ## Install on Mac & Linux
 ```bash
-brew tap tiwut/tab https://github.com/tiwut/homebrew-tap.git
+brew tap Nexus-Titan/tab https://github.com/Nexus-Titan/homebrew-tap.git
 brew update
-brew install nexus-titan
+brew install nexus4
 ```
 run with:
 ```bash
-nexus
+nexus4
 ```
 ## Install with `yay` (Arch Linux)
 
