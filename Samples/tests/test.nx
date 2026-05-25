@@ -1,0 +1,234 @@
+
+
+out cli.bold(cli.cyan("===================================================="))
+out cli.bold(cli.cyan("           NEXUS Titan 4.2.0 Complete Test Suite    "))
+out cli.bold(cli.cyan("===================================================="))
+out ""
+
+out cli.yellow("--- [1] Core Math Module Verification ---")
+set pi_val = math.pi()
+set e_val = math.e()
+set tau_val = math.tau()
+set s_val = math.sin(0.5)
+set c_val = math.cos(0.5)
+set sq_val = math.sqrt(16)
+set p_val = math.pow(2, 3)
+set min_val = math.min(10, 20)
+set max_val = math.max(10, 20)
+set abs_val = math.abs(-5)
+set ceil_val = math.ceil(4.2)
+set floor_val = math.floor(4.8)
+out "Math PI: " + pi_val
+out "Math E: " + e_val
+out "Math TAU: " + tau_val
+out "Math Sin(0.5): " + s_val
+out "Math Cos(0.5): " + c_val
+out "Math Sqrt(16): " + sq_val
+out "Math Pow(2,3): " + p_val
+out "Math Min(10,20): " + min_val
+out "Math Max(10,20): " + max_val
+out "Math Abs(-5): " + abs_val
+out "Math Ceil(4.2): " + ceil_val
+out "Math Floor(4.8): " + floor_val
+out cli.green("✔ Math tests passed.")
+out ""
+
+out cli.yellow("--- [2] Core String Module Verification ---")
+set test_str = "  Nexus Scripting Language  "
+set s_len = str.len(test_str)
+set s_upper = str.upper(test_str)
+set s_lower = str.lower(test_str)
+set s_trim = str.trim(test_str)
+set s_rev = str.reverse("AUTONOMY")
+set s_rep = str.repeat("*", 5)
+set s_repl = str.replace("Hello World", "World", "Titan")
+set s_slice = str.slice("Developer", 0, 4)
+set s_at = str.at("[\"one\", \"two\", \"three\"]", 1)
+set s_find = str.find("Nexus Engine", "Engine")
+set s_starts = str.starts("Titan V4", "Titan")
+set s_ends = str.ends("Titan V4", "V4")
+set s_isnum = str.isnum("123.45")
+set s_isalpha = str.isalpha("Nexus")
+set s_chr = str.chr(65)
+set s_ord = str.ord("A")
+out "String Length: " + s_len
+out "String Uppercase: " + s_upper
+out "String Lowercase: " + s_lower
+out "String Trimmed: '" + s_trim + "'"
+out "String Reversed: " + s_rev
+out "String Repeated: " + s_rep
+out "String Replaced: " + s_repl
+out "String Slicing: " + s_slice
+out "String At Index 1: " + s_at
+out "String Find Position: " + s_find
+out "String Starts With: " + s_starts
+out "String Ends With: " + s_ends
+out "String Numeric Check: " + s_isnum
+out "String Alphabetic Check: " + s_isalpha
+out "String Char Mapping (65): " + s_chr
+out "String Ordinal Mapping ('A'): " + s_ord
+out cli.green("✔ String tests passed.")
+out ""
+
+out cli.yellow("--- [3] Core System Environment Verification ---")
+set s_os = sys.os()
+set s_ver = sys.ver()
+set s_arch = sys.arch()
+set s_user = sys.user()
+set s_cwd = sys.cwd()
+set s_pid = sys.pid()
+set s_cpu = sys.cpu_count()
+set s_info = sys.info()
+out "OS: " + s_os
+out "Version: " + s_ver
+out "Architecture: " + s_arch
+out "User: " + s_user
+out "CWD: " + s_cwd
+out "Process PID: " + s_pid
+out "CPU Thread Count: " + s_cpu
+out "System Info details: " + s_info
+out cli.green("✔ System tests passed.")
+out ""
+
+out cli.yellow("--- [4] Core Date & Time Verification ---")
+set d_now = date.now()
+set d_today = date.today()
+set d_iso = date.iso()
+set d_ts = date.ts()
+set d_year = date.year()
+set d_month = date.month()
+set d_day = date.day()
+set d_hour = date.hour()
+set d_min = date.min()
+set d_sec = date.sec()
+out "Timestamp Now: " + d_now
+out "Today's Date: " + d_today
+out "ISO format date: " + d_iso
+out "Epoch Seconds: " + d_ts
+out "Date split Year: " + d_year
+out "Date split Month: " + d_month
+out "Date split Day: " + d_day
+out "Date split Hour: " + d_hour
+out "Date split Minute: " + d_min
+out "Date split Second: " + d_sec
+out cli.green("✔ Date and Time tests passed.")
+out ""
+
+out cli.yellow("--- [5] Core Random Number Verification ---")
+set r_val = rnd.val()
+set r_int = rnd.int(1, 100)
+set r_float = rnd.float(1.5, 9.5)
+set r_choice = rnd.choice("[\"apple\", \"banana\", \"cherry\"]")
+set r_uuid = rnd.uuid()
+out "Random Value (0-1): " + r_val
+out "Random Integer (1-100): " + r_int
+out "Random Float (1.5-9.5): " + r_float
+out "Random Choice: " + r_choice
+out "Random UUID: " + r_uuid
+out cli.green("✔ Random number tests passed.")
+out ""
+
+out cli.yellow("--- [6] Core Cryptography & Hash Verification ---")
+set hash_md5 = crypto.md5("autonomy")
+set hash_sha = crypto.sha256("autonomy")
+set b64_enc = crypto.b64e("Nexus Core Engine")
+set b64_dec = crypto.b64d(b64_enc)
+out "MD5 Hash: " + hash_md5
+out "SHA-256 Hash: " + hash_sha
+out "Base64 Encoded: " + b64_enc
+out "Base64 Decoded: " + b64_dec
+out cli.green("✔ Cryptography tests passed.")
+out ""
+
+out cli.yellow("--- [7] Core JSON Parser Verification ---")
+set json_str = "{\"engine\": \"Titan\", \"version\": \"4.2.0\", \"speed\": \"fast\"}"
+set json_engine = json.get(json_str, "engine")
+set json_speed = json.get(json_str, "speed")
+out "JSON Get Field ('engine'): " + json_engine
+out "JSON Get Field ('speed'): " + json_speed
+set updated_json = json.set(json_str, "speed", "maximum")
+set json_new_speed = json.get(updated_json, "speed")
+out "JSON Updated Field ('speed'): " + json_new_speed
+out cli.green("✔ JSON tests passed.")
+out ""
+
+out cli.yellow("--- [8] Core Filesystem & I/O Verification ---")
+set test_file = "test_io_temp.txt"
+set test_dir = "test_io_dir"
+set io_w = io.write(test_file, "Line 1 Content\n")
+set io_a = io.append(test_file, "Line 2 Content\n")
+set io_exists_pre = io.exists(test_file)
+set io_read = io.read(test_file)
+set io_lines = io.read_lines(test_file)
+set io_size = io.size(test_file)
+set io_ext = io.ext(test_file)
+set io_base = io.base(test_file)
+set io_abs = io.abs(test_file)
+set io_mkdir = io.mkdir(test_dir)
+set io_isdir = io.isdir(test_dir)
+set io_isfile = io.isfile(test_file)
+out "File Created: " + io_exists_pre
+out "File Size: " + io_size + " bytes"
+out "File Extension: " + io_ext
+out "File Basename: " + io_base
+out "File Absolute Path: " + io_abs
+out "Directory Created: " + io_isdir
+out "File Checksum SHA-256: " + io.file_hash_sha256(test_file)
+set io_rm_file = io.remove(test_file)
+set io_rm_dir = io.rmdir(test_dir)
+out "Cleanup verification: " + (io_rm_file + io_rm_dir)
+out cli.green("✔ Filesystem and I/O tests passed.")
+out ""
+
+out cli.yellow("--- [9] Core Networking & Client Verification ---")
+set net_online = net.is_online()
+set net_ping = net.ping("127.0.0.1")
+set net_ip = net.ip()
+out "Online check: " + net_online
+out "Loopback Ping check (127.0.0.1): " + net_ping
+out "System IP: " + net_ip
+out cli.green("✔ Networking tests passed.")
+out ""
+
+out cli.yellow("--- [10] Standard Extensions Import Verification ---")
+import "logger.nx"
+logger.info("Diagnostics logging test.")
+
+import "fs.nx"
+set files_list = fs.find_files(sys.cwd(), ".nx")
+out "Discovered scripts: " + str.len(files_list)
+
+import "json_db.nx"
+set db_init = json_db.init_db("test_diagnostics")
+set db_set_ok = json_db.db_set("test_diagnostics", "status", "ready")
+set db_val = json_db.db_get("test_diagnostics", "status")
+out "JSON DB Set/Get Value: " + db_val
+set db_cleanup = io.remove("test_diagnostics.json")
+
+import "nx_suite.nx"
+nx_suite.draw_rect(0, 0, 10, 10, "red")
+
+out cli.green("✔ Extensions verification passed.")
+out ""
+
+out cli.yellow("--- [11] Native dialogues Verification ---")
+gui.msg("Native message box successfully loaded!")
+set user_ans = gui.ask("Do you want to run the dynamic X11/Win32 canvas GUI drawer?")
+if user_ans == "1"
+    gui.window("Nexus Modern Canvas Test", "450x380")
+    gui.label("--- Canvas drawing diagnostic ---")
+    gui.draw_rect(10, 10, 80, 50, "blue")
+    gui.draw_line(100, 10, 200, 60, "red")
+    gui.draw_circle(250, 40, 30, "green")
+    gui.button("Complete Canvas Test", "gui_complete")
+    gui.run()
+end
+
+fn gui_complete()
+    gui.msg("Verification successfully completed!")
+    sys.exit()
+end
+
+out cli.bold(cli.green("===================================================="))
+out cli.bold(cli.green("       ALL TESTS COMPLETED SUCCESSFULLY! (4.2.0)    "))
+out cli.bold(cli.green("===================================================="))

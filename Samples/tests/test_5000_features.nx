@@ -1,0 +1,65 @@
+gui.window("Nexus Web Runtime", "650x550")
+gui.bg_color("#0b0f19")
+gui.canvas_color("#0b0f19")
+gui.font("helvetica", "14")
+gui.resizable("1")
+
+set html = "
+<div style='padding: 10px 20px; margin: 10px; background-color: #0b0f19;'>
+  <h1 style='color: #60a5fa;'>Nexus HTML Document</h1>
+  <p style='color: #9ca3af;'>Self-sufficient layout compiler rendering rich media &amp; semantics:</p>
+  <br>
+
+  <blockquote style='color: #38bdf8;'>
+    'The advance of digital autonomy begins with zero external dependencies.'
+  </blockquote>
+  <br>
+  <pre><code>set system_ver = \"Nexus v4.5\"</code></pre>
+  <br>
+
+  <p style='color: #e2e8f0;'>Tabular Grid System:</p>
+  <table>
+    <tr>
+      <th>Module</th>
+      <th>Status</th>
+      <th>Score</th>
+    </tr>
+    <tr>
+      <td>JS Engine</td>
+      <td>Active</td>
+      <td>99.9%</td>
+    </tr>
+    <tr>
+      <td>CSS Cascades</td>
+      <td>Compliant</td>
+      <td>5000+</td>
+    </tr>
+  </table>
+  <br>
+
+  <p style='color: #d1d5db;'>
+    We support <mark>Highlighted text</mark>, <u>Underlines</u>, and <del>Strikethrough</del> styles natively.
+  </p>
+  <br>
+
+  <p style='color: #38bdf8;'>Core Diagnostics / Gauges:</p>
+  <progress value='0.75' style='margin: 5px;'></progress>
+  <meter value='0.45' style='margin: 5px;'></meter>
+  <br><br>
+
+  <p style='color: #e2e8f0;'>Multiline feedback field:</p>
+  <textarea id='comments' placeholder='Type complex multi-line comment...'></textarea>
+  <br>
+  <button onclick='alert_callback' style='width: 180; height: 32; background-color: #10b981; border-color: #34d399; color: #ffffff;'>Submit Review</button>
+</div>
+
+<script>
+function alert_callback() {
+  console.log(\"Submitting multi-line review feedback...\");
+  alert(\"Feedback registered successfully inside the web engine!\");
+}
+</script>
+"
+
+web.render(html)
+gui.run()

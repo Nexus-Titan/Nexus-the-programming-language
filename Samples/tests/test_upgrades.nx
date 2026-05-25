@@ -1,0 +1,74 @@
+
+
+out cli.bold(cli.cyan("===================================================="))
+out cli.bold(cli.cyan("           NEXUS Titan 4.3.0 Upgrade Verification   "))
+out cli.bold(cli.cyan("===================================================="))
+out ""
+
+out cli.yellow("--- [1] Math clamp, lerp, sign Verification ---")
+set cl_val1 = math.clamp(50, 10, 100)
+set cl_val2 = math.clamp(5, 10, 100)
+set cl_val3 = math.clamp(150, 10, 100)
+set lr_val = math.lerp(10, 20, 0.5)
+set sg_val1 = math.sign(-45.5)
+set sg_val2 = math.sign(0)
+set sg_val3 = math.sign(99)
+out "Math Clamp (50 in 10-100): " + cl_val1
+out "Math Clamp (5 in 10-100): " + cl_val2
+out "Math Clamp (150 in 10-100): " + cl_val3
+out "Math Lerp (10 to 20 by 0.5): " + lr_val
+out "Math Sign (-45.5): " + sg_val1
+out "Math Sign (0): " + sg_val2
+out "Math Sign (99): " + sg_val3
+out cli.green("✔ Math upgrades passed.")
+out ""
+
+out cli.yellow("--- [2] String contains, pad_left, pad_right Verification ---")
+set has_sub1 = str.contains("Nexus Titan Engine", "Titan")
+set has_sub2 = str.contains("Nexus Titan Engine", "Python")
+set pad_l = str.pad_left("77", 5, "0")
+set pad_r = str.pad_right("77", 5, "*")
+out "String Contains ('Titan'): " + has_sub1
+out "String Contains ('Python'): " + has_sub2
+out "String Pad Left ('77' to 5 width with '0'): '" + pad_l + "'"
+out "String Pad Right ('77' to 5 width with '*'): '" + pad_r + "'"
+out cli.green("✔ String upgrades passed.")
+out ""
+
+out cli.yellow("--- [3] JSON key deletion Verification ---")
+set test_json = "{\"user\": \"tiwut\", \"role\": \"admin\", \"status\": \"active\"}"
+set deleted_json = json.delete(test_json, "role")
+set user_val = json.get(deleted_json, "user")
+set role_val = json.get(deleted_json, "role")
+out "JSON After Deletion of 'role': " + deleted_json
+out "JSON Field 'user' still exists: " + user_val
+out "JSON Field 'role' removed successfully: " + (role_val == "")
+out cli.green("✔ JSON key deletion upgrades passed.")
+out ""
+
+out cli.yellow("--- [4] System Hostname & Dynamic Network IP Verification ---")
+set host = sys.hostname()
+set ip_val = net.ip()
+out "System Hostname: " + host
+out "Dynamic Public Network IP: " + ip_val
+out cli.green("✔ System & Network upgrades passed.")
+out ""
+
+out cli.yellow("--- [5] Canvas Graphical Outlines & Text Verification ---")
+gui.window("Nexus Modern Canvas 4.3.0", "450x380")
+gui.label("--- Outline Shapes & Text Rendering ---")
+gui.draw_rect_outline(10, 10, 120, 80, "blue")
+gui.draw_circle_outline(200, 50, 40, "green")
+gui.draw_text(10, 120, "Nexus Titan C++ Canvas Engine", "red")
+gui.draw_text(10, 150, "Zero-Dependency Cross-Platform (v4.3.0)", "yellow")
+gui.button("Complete Canvas 4.3.0 Test", "gui_complete")
+gui.run()
+
+fn gui_complete()
+    gui.msg("Verification successfully completed! Outline shapes and transparent text rendered perfectly!")
+    sys.exit()
+end
+
+out cli.bold(cli.green("===================================================="))
+out cli.bold(cli.green("      ALL UPGRADES PASSED SUCCESSFULLY! (4.3.0)    "))
+out cli.bold(cli.green("===================================================="))

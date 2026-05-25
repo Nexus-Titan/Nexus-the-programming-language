@@ -1,0 +1,36 @@
+gui.window("Nexus Web Canvas Pro", "600x500")
+gui.bg_color("#1f2937")
+gui.canvas_color("#111827")
+gui.font("helvetica", "14")
+gui.resizable("1")
+
+set html = "
+<div style='padding: 10px; margin: 10px;'>
+  <h1 style='color: #60a5fa;'>Nexus Premium Hypermedia Engine</h1>
+  <p style='color: #d1d5db;'>This input and button are natively rendered on the drawing canvas with custom inline CSS styles:</p>
+  <br>
+  <div style='background-color: #1e293b; border-color: #3b82f6; width: 520; height: 180;'>
+    <p style='color: #38bdf8;'>Configure details below:</p>
+    <br>
+    <input type='text' id='username' value='admin' placeholder='Enter username...' style='width: 180; height: 28; background-color: #0f172a; border-color: #475569; color: #38bdf8;'>
+    <input type='text' id='email' value='' placeholder='Enter email...' style='width: 180; height: 28; background-color: #0f172a; border-color: #475569; color: #38bdf8;'>
+    <br><br>
+    <button onclick='submit_callback' style='width: 120; height: 32; background-color: #2563eb; border-color: #3b82f6; color: #ffffff;'>Save Changes</button>
+  </div>
+</div>
+"
+
+web.render(html)
+
+fn submit_callback()
+    set user = gui.get_entry("username")
+    set mail = gui.get_entry("email")
+    out "=============================="
+    out "  HTML Submit Event Triggered"
+    out "=============================="
+    out "Username: " + user
+    out "Email: " + mail
+    out "=============================="
+end
+
+gui.run()
