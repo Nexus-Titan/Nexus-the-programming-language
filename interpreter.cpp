@@ -111,21 +111,59 @@ public:
     }
     return "";
   }
+  
+  bool is_number(const string& s) {
+    if (s.empty()) return false;
+    try {
+      size_t pos;
+      stod(s, &pos);
+      return pos == s.length();
+    } catch (...) {
+      return false;
+    }
+  }
+
   string resolve_complex(string input) {
     input = trim(input);
     if (input.empty()) return "";
+
+    string ops[] = {"==", "!=", "<=", ">=", "<", ">"};
+    for (const string& op : ops) {
+      size_t pos = input.find(op);
+      if (pos != string::npos) {
+        string left = resolve_complex(input.substr(0, pos));
+        string right = resolve_complex(input.substr(pos + op.length()));
+        
+        bool num_cmp = is_number(left) && is_number(right);
+        double l_num = num_cmp ? stod(left) : 0;
+        double r_num = num_cmp ? stod(right) : 0;
+
+        if (op == "==") return (left == right) ? "1" : "0";
+        if (op == "!=") return (left != right) ? "1" : "0";
+        
+        if (op == "<=") return num_cmp ? (l_num <= r_num ? "1" : "0") : (left <= right ? "1" : "0");
+        if (op == ">=") return num_cmp ? (l_num >= r_num ? "1" : "0") : (left >= right ? "1" : "0");
+        if (op == "<")  return num_cmp ? (l_num < r_num ? "1" : "0") : (left < right ? "1" : "0");
+        if (op == ">")  return num_cmp ? (l_num > r_num ? "1" : "0") : (left > right ? "1" : "0");
+      }
+    }
+
     static const regex mod_regex(R"((\w+)\.(\w+)\((.*)\))");
     smatch m;
     if (regex_search(input, m, mod_regex)) {
       return call_stdlib(m[1], m[2], m[3]);
     }
+    
     if (input.front() == '"' && input.back() == '"')
       return input.substr(1, input.size() - 2);
+      
     if (vars.count(input)) return vars[input];
+    
     size_t plus = input.find('+');
     if (plus != string::npos) {
         return resolve_complex(input.substr(0, plus)) + resolve_complex(input.substr(plus + 1));
     }
+    
     return input;
   }
   void run(vector<string> lines) {
