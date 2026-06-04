@@ -4,6 +4,8 @@
 
 It also hosts a **native X11 / Win32 graphics suite** for premium styled windows, button hovering animations, entry field text capturing, vector drawing canvases, and popup alerts with **zero delay**. 
 
+[SYNTAX](SYNTAX.md)
+
 | Language | Execution Speed | Syntax Simplicity | Lines of Code | Use Case |
 | :--- | :--- | :--- | :--- | :--- |
 | NEXUS 4.5 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | Very Low | Rapid Dev / Logic |
