@@ -68,36 +68,36 @@ To execute standard scripts:
 
 ## 3. Project Directory Map
 
-- **`src/interpreter_core.cpp`**: Zero-dependency standard C++11 execution engine with unified native X11 window drawer, in-memory JavaScript compilation, and secure network sockets.
-- **`src/html.cpp`**: Sophisticated layout compiler translating HTML5/CSS shorthand rules directly into visual draw commands.
-- **`README.md`**: Master developer manual and install guide.
-- **`SYNTAX.md`**: Up-to-date complete language syntax reference sheet.
-- **`libs/`**: Standard pre-installed extension libraries:
+* **`src/interpreter_core.cpp`**: Zero-dependency standard C++11 execution engine with unified native X11 window drawer, in-memory JavaScript compilation, and secure network sockets.
+* **`src/html.cpp`**: Sophisticated layout compiler translating HTML5/CSS shorthand rules directly into visual draw commands.
+* **`README.md`**: Master developer manual and install guide.
+* **`SYNTAX.md`**: Up-to-date complete language syntax reference sheet.
+* **`libs/`**: Standard pre-installed extension libraries:
   - **Nexus Libraries**:
-    - `ssl.nx`: Secure wrapper exposing `ssl.get`, `ssl.post`, and `ssl.download` utilizing the core C++ socket engine.
-    - `logger.nx`: Upgraded logger mapping structured colored console details into `app.log`.
-    - `fs.nx`: High-level recursive file backup, listing, and cleaning.
-    - `json_db.nx`: Upgraded lightweight storage engine using native C++ JSON helpers.
-    - `http_client.nx`: High-level REST API requests wrapper.
-    - `nx_suite.nx`: Canvas rendering rectangle draws.
+    * `ssl.nx`: Secure wrapper exposing `ssl.get`, `ssl.post`, and `ssl.download` utilizing the core C++ socket engine.
+    * `logger.nx`: Upgraded logger mapping structured colored console details into `app.log`.
+    * `fs.nx`: High-level recursive file backup, listing, and cleaning.
+    * `json_db.nx`: Upgraded lightweight storage engine using native C++ JSON helpers.
+    * `http_client.nx`: High-level REST API requests wrapper.
+    * `nx_suite.nx`: Canvas rendering rectangle draws.
   - **Python Helpers**:
-    - `system_monitor.py`: CPU loads, RAM stats, disk allocations.
-    - `net_utils.py`: Networks port scanners and checks.
-    - `ai_helper.py`: Sentiment analyst.
-    - `py_suite.py`: Math modeling processor.
-- **`Samples/`**: Demonstration scripts:
-  - `browser.nx`: Interactive modern hypermedia web browser using native C++ HTML rendering and socket GET queries.
-  - `calculator.nx`: Trigonometric console application.
-  - `todo.nx`: Upgraded native graphical planner dashboard.
-  - `guessing_game.nx`: Random number guessing game with native C++ dialogs.
-  - `file_manager.nx`: I/O scanner.
-  - `text_analyzer.nx`: Standard string utilities check.
+    * `system_monitor.py`: CPU loads, RAM stats, disk allocations.
+    * `net_utils.py`: Networks port scanners and checks.
+    * `ai_helper.py`: Sentiment analyst.
+    * `py_suite.py`: Math modeling processor.
+- **Samples/**: Demonstration scripts:
+  * `browser.nx`: Interactive modern hypermedia web browser using native C++ HTML rendering and socket GET queries.
+  * `calculator.nx`: Trigonometric console application.
+  * `todo.nx`: Upgraded native graphical planner dashboard.
+  * `guessing_game.nx`: Random number guessing game with native C++ dialogs.
+  * `file_manager.nx`: I/O scanner.
+  * `text_analyzer.nx`: Standard string utilities check.
 - **`test_js_wayland.nx`**: Embedded JavaScript runtime validation test.
 - **`test_advanced_drawing.nx`**: Canvas gradient, software blur, rounded corner, and triangle diagnostic test.
 - **`test_5000_features.nx`**: Heavy layout diagnostic checking cells tables, progresses, code blocks, and input textareas.
 - **`nexus-vscode/`**: VS Code support extension package:
-  - `syntaxes/nexus.tmLanguage.json`: Grammar highlighting tokens.
-  - `themes/nexus-titan-theme.json`: Custom deep dark theme workspace.
+  * `syntaxes/nexus.tmLanguage.json`: Grammar highlighting tokens.
+  * `themes/nexus-titan-theme.json`: Custom deep dark theme workspace.
 
 ---
 
