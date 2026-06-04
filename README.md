@@ -4,6 +4,14 @@
 
 It also hosts a **native X11 / Win32 graphics suite** for premium styled windows, button hovering animations, entry field text capturing, vector drawing canvases, and popup alerts with **zero delay**. 
 
+| Language | Execution Speed | Syntax Simplicity | Lines of Code | Use Case |
+| :--- | :--- | :--- | :--- | :--- |
+| NEXUS 4.5 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | Very Low | Rapid Dev / Logic |
+| **Python 3** | ⭐ | ⭐⭐⭐⭐ | Low | Data / AI / Scripting |
+| **C++** | ⭐⭐⭐⭐ | ⭐ | Very High | Engines / Systems |
+| **Rust** | ⭐⭐⭐⭐ | ⭐⭐⭐ | High | Safety / Systems |
+| **C** | ⭐⭐⭐⭐ | ⭐ | High | Embedded / Kernel |
+
 ## What's New in Version 4.5.0
 * **Embedded JavaScript compilation & Execution Engine (`<script>`)**: Natively extracts and compiles inline JavaScript functions. Executes common commands (`alert()`, `console.log()`, and DOM value updates `document.getElementById().value = "..."`) directly on local layout entries with zero third-party script dependencies.
 * **Wayland Display Server Verification**: Probes system environment indicators (`WAYLAND_DISPLAY`) on startup, printing high-performance boot diagnostics that guarantee zero-delay graphics output via XWayland compositing.
